@@ -11,10 +11,7 @@
   >
 
 
-  <!-- =====================================
-       CHANGE 01
-       PROJECT NAME
-  ====================================== -->
+  <!-- CHANGE PROJECT NAME -->
 
   <title>PROJECT NAME — Guy</title>
 
@@ -30,17 +27,15 @@
 <body>
 
 
-  <!-- =====================================
+  <!-- =========================
        NAVIGATION
-       NO NEED TO CHANGE
-  ====================================== -->
+       DO NOT CHANGE
+  ========================== -->
 
   <header class="site-header">
 
     <nav class="navigation">
 
-
-      <!-- LOGO -->
 
       <a
         class="logo"
@@ -50,13 +45,8 @@
       </a>
 
 
-
-      <!-- MENU -->
-
       <div class="menu">
 
-
-        <!-- ME -->
 
         <a
           class="menu-item"
@@ -65,9 +55,6 @@
           ME
         </a>
 
-
-
-        <!-- WORK -->
 
         <div
           class="work-menu"
@@ -92,14 +79,12 @@
 
           <div class="work-dropdown">
 
-
             <a
               href="work.html?filter=all"
               data-dropdown-filter="all"
             >
               ALL
             </a>
-
 
             <a
               href="work.html?filter=kv"
@@ -108,14 +93,12 @@
               KV
             </a>
 
-
             <a
               href="work.html?filter=illustration"
               data-dropdown-filter="illustration"
             >
               ILLUSTRATION
             </a>
-
 
             <a
               href="work.html?filter=motion"
@@ -124,14 +107,12 @@
               MOTION
             </a>
 
-
             <a
               href="work.html?filter=3d"
               data-dropdown-filter="3d"
             >
               3D
             </a>
-
 
             <a
               href="work.html?filter=fine-art"
@@ -140,17 +121,10 @@
               FINE ART
             </a>
 
-
           </div>
 
         </div>
 
-
-
-        <!--
-          JAVASCRIPT CHANGES
-          PLAY INTO ???
-        -->
 
         <a
           class="menu-item"
@@ -159,9 +133,6 @@
           PLAY
         </a>
 
-
-
-        <!-- CONTACT -->
 
         <a
           class="menu-item"
@@ -180,49 +151,33 @@
 
 
 
-  <!-- =====================================
-       PROJECT PAGE
-  ====================================== -->
+  <!-- =========================
+       PROJECT
+  ========================== -->
 
   <main class="project-page">
 
 
 
-    <!-- =================================
+    <!-- =========================
          PROJECT HEADER
-    ================================== -->
+    ========================== -->
 
     <section class="project-header">
 
 
-      <!-- LEFT -->
-
       <div class="project-header-label">
-
-
-        <!-- =============================
-             CHANGE 02
-             PROJECT NUMBER
-        ============================== -->
 
         <p>
           PROJECT 00
         </p>
 
-
       </div>
 
 
 
-      <!-- RIGHT -->
-
       <div class="project-header-main">
 
-
-        <!-- =============================
-             CHANGE 03
-             PROJECT NAME
-        ============================== -->
 
         <h1>
           PROJECT NAME
@@ -230,27 +185,14 @@
 
 
 
-        <!-- PROJECT INFORMATION -->
-
         <div class="project-meta">
 
-
-
-          <!-- =========================
-               CATEGORY
-          ========================== -->
 
           <div>
 
             <p class="project-meta-label">
               CATEGORY
             </p>
-
-
-            <!-- =========================
-                 CHANGE 04
-                 CATEGORY
-            ========================== -->
 
             <p>
               CATEGORY
@@ -259,22 +201,11 @@
           </div>
 
 
-
-          <!-- =========================
-               YEAR
-          ========================== -->
-
           <div>
 
             <p class="project-meta-label">
               YEAR
             </p>
-
-
-            <!-- =========================
-                 CHANGE 05
-                 YEAR
-            ========================== -->
 
             <p>
               2026
@@ -283,22 +214,11 @@
           </div>
 
 
-
-          <!-- =========================
-               TYPE
-          ========================== -->
-
           <div>
 
             <p class="project-meta-label">
               TYPE
             </p>
-
-
-            <!-- =========================
-                 CHANGE 06
-                 TYPE
-            ========================== -->
 
             <p>
               Personal / Selected Work
@@ -317,39 +237,30 @@
 
 
 
-    <!-- =================================
-         HERO IMAGE
-    ================================== -->
+    <!-- =========================
+         HERO
+
+         IMPORTANT:
+         HERO LOADS IMMEDIATELY
+    ========================== -->
 
     <section class="project-media-section">
 
       <figure class="media-wide">
 
-
-        <!-- =============================
-             CHANGE 07
-             PROJECT FOLDER
-
-             EXAMPLE:
-             project-03
-        ============================== -->
-
         <img
           src="images/project-00/hero.jpg"
+
           alt="PROJECT NAME main visual"
+
+          loading="eager"
+
+          fetchpriority="high"
         >
-
-
-        <!-- =============================
-             CHANGE 08
-             CAPTION
-             OR DELETE FIGCAPTION
-        ============================== -->
 
         <figcaption>
           Main visual / PROJECT NAME
         </figcaption>
-
 
       </figure>
 
@@ -357,14 +268,12 @@
 
 
 
-    <!-- =================================
+    <!-- =========================
          ABOUT
-    ================================== -->
+    ========================== -->
 
     <section class="project-description">
 
-
-      <!-- LEFT -->
 
       <div class="project-description-label">
 
@@ -376,27 +285,14 @@
 
 
 
-      <!-- RIGHT -->
-
       <div class="project-description-text">
 
-
-        <!-- =============================
-             CHANGE 09
-             BIG INTRO
-        ============================== -->
 
         <p class="project-lead">
           Write one strong sentence that introduces
           the project here.
         </p>
 
-
-
-        <!-- =============================
-             CHANGE 10
-             PROJECT DESCRIPTION
-        ============================== -->
 
         <p>
           Explain the project, idea, context,
@@ -419,30 +315,30 @@
 
 
 
-    <!-- =================================
+    <!-- =========================
          GALLERY BLOCK A
-         ONE WIDE IMAGE
-    ================================== -->
+         WIDE IMAGE
+
+         LAZY LOAD
+    ========================== -->
 
     <section class="project-media-section">
 
       <figure class="media-wide">
 
-
-        <!-- =============================
-             CHANGE IMAGE PATH
-        ============================== -->
-
         <img
           src="images/project-00/image-02.jpg"
-          alt="PROJECT NAME detail 02"
-        >
 
+          alt="PROJECT NAME detail 02"
+
+          loading="lazy"
+
+          decoding="async"
+        >
 
         <figcaption>
           Image caption
         </figcaption>
-
 
       </figure>
 
@@ -450,24 +346,28 @@
 
 
 
-    <!-- =================================
+    <!-- =========================
          GALLERY BLOCK B
          TWO IMAGES
-    ================================== -->
+
+         LAZY LOAD
+    ========================== -->
 
     <section class="project-media-section">
 
       <div class="media-two">
 
 
-
-        <!-- LEFT IMAGE -->
-
         <figure>
 
           <img
             src="images/project-00/image-03.jpg"
+
             alt="PROJECT NAME detail 03"
+
+            loading="lazy"
+
+            decoding="async"
           >
 
           <figcaption>
@@ -478,13 +378,16 @@
 
 
 
-        <!-- RIGHT IMAGE -->
-
         <figure>
 
           <img
             src="images/project-00/image-04.jpg"
+
             alt="PROJECT NAME detail 04"
+
+            loading="lazy"
+
+            decoding="async"
           >
 
           <figcaption>
@@ -500,24 +403,28 @@
 
 
 
-    <!-- =================================
+    <!-- =========================
          GALLERY BLOCK C
          IMAGE + TEXT
-    ================================== -->
+
+         LAZY LOAD
+    ========================== -->
 
     <section class="project-media-section">
 
       <div class="media-image-text">
 
 
-
-        <!-- IMAGE -->
-
         <figure>
 
           <img
             src="images/project-00/image-05.jpg"
+
             alt="PROJECT NAME detail 05"
+
+            loading="lazy"
+
+            decoding="async"
           >
 
           <figcaption>
@@ -528,10 +435,7 @@
 
 
 
-        <!-- TEXT -->
-
         <div class="media-text">
-
 
           <p class="media-text-label">
             PROCESS
@@ -552,7 +456,7 @@
 
           <p>
             If you do not need this section,
-            you can delete the entire Gallery Block C.
+            delete the entire Gallery Block C.
           </p>
 
 
@@ -565,21 +469,12 @@
 
 
 
-    <!-- =================================
+    <!-- =========================
          PROJECT NAVIGATION
-    ================================== -->
+    ========================== -->
 
     <section class="project-navigation">
 
-
-
-      <!-- =============================
-           CHANGE 11
-           PREVIOUS PROJECT
-
-           EXAMPLE:
-           project-02.html
-      ============================== -->
 
       <a
         href="project-02.html"
@@ -589,9 +484,6 @@
       </a>
 
 
-
-      <!-- BACK TO WORK -->
-
       <a
         href="work.html"
         class="project-nav-link"
@@ -599,15 +491,6 @@
         BACK TO WORK
       </a>
 
-
-
-      <!-- =============================
-           CHANGE 12
-           NEXT PROJECT
-
-           IF THERE IS NO NEXT PROJECT
-           YET, KEEP THIS AS A SPAN
-      ============================== -->
 
       <span class="project-nav-disabled">
         NEXT →
@@ -620,11 +503,6 @@
   </main>
 
 
-
-  <!-- =====================================
-       JAVASCRIPT
-       NO NEED TO CHANGE
-  ====================================== -->
 
   <script src="script.js"></script>
 
