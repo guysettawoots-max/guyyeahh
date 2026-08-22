@@ -1,1348 +1,2123 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
 
 
-  /* ========================================
-     MAIN ELEMENTS
-  ======================================== */
+    /* ========================================
+       ACCESSIBILITY FOUNDATION
+    ======================================== */
 
-  const navigation =
-    document.querySelector(".navigation");
-
-  const mainMenu =
-    document.querySelector(".menu");
-
-  const menuItems =
-    Array.from(
-      document.querySelectorAll(".menu-item")
-    );
+    function setupAccessibility() {
 
 
+      /* ======================================
+         ACCESSIBILITY STYLES
+      ====================================== */
 
-  /* ========================================
-     MOBILE MENU
-  ======================================== */
-
-  let mobileMenuButton = null;
-
-
-  if (navigation && mainMenu) {
-
-    mainMenu.id = "site-menu";
+      const accessibilityStyle =
+        document.createElement("style");
 
 
-    mobileMenuButton =
-      document.createElement("button");
+      accessibilityStyle.textContent = `
+
+        /* SKIP LINK */
+
+        .skip-link {
+          position: fixed;
+
+          top: 12px;
+          left: 12px;
+
+          z-index: 99999;
+
+          padding: 12px 16px;
+
+          border: 1px solid #111111;
+
+          background: #ffffff;
+          color: #111111;
+
+          font-family:
+            Arial,
+            Helvetica,
+            sans-serif;
+
+          font-size: 12px;
+
+          text-decoration: none;
+
+          transform:
+            translateY(-200%);
+
+          transition:
+            transform 0.15s ease;
+        }
 
 
-    mobileMenuButton.className =
-      "mobile-menu-toggle";
+        .skip-link:focus {
+          transform:
+            translateY(0);
+        }
 
 
-    mobileMenuButton.type =
-      "button";
+
+        /* KEYBOARD FOCUS */
+
+        a:focus-visible,
+        button:focus-visible,
+        [tabindex]:focus-visible {
+          outline:
+            2px solid #111111;
+
+          outline-offset:
+            4px;
+        }
 
 
-    mobileMenuButton.setAttribute(
-      "aria-controls",
-      "site-menu"
-    );
+
+        /* MAIN CONTENT FOCUS */
+
+        #main-content:focus {
+          outline: none;
+        }
 
 
-    mobileMenuButton.setAttribute(
-      "aria-expanded",
-      "false"
-    );
+
+        /* SCREEN READER ONLY */
+
+        .sr-only {
+          position: absolute !important;
+
+          width: 1px !important;
+          height: 1px !important;
+
+          padding: 0 !important;
+          margin: -1px !important;
+
+          overflow: hidden !important;
+
+          clip:
+            rect(
+              0,
+              0,
+              0,
+              0
+            ) !important;
+
+          white-space:
+            nowrap !important;
+
+          border: 0 !important;
+        }
+
+      `;
 
 
-    mobileMenuButton.textContent =
-      "MENU";
+      document.head.appendChild(
+        accessibilityStyle
+      );
 
 
-    navigation.insertBefore(
-      mobileMenuButton,
+
+      /* ======================================
+         MAIN CONTENT
+      ====================================== */
+
+      const mainContent =
+        document.querySelector("main");
+
+
+      if (mainContent) {
+
+
+        if (!mainContent.id) {
+
+          mainContent.id =
+            "main-content";
+
+        }
+
+
+        mainContent.setAttribute(
+          "tabindex",
+          "-1"
+        );
+
+
+
+        /* ==================================
+           SKIP LINK
+        ================================== */
+
+        const skipLink =
+          document.createElement("a");
+
+
+        skipLink.className =
+          "skip-link";
+
+
+        skipLink.href =
+          "#main-content";
+
+
+        skipLink.textContent =
+          "SKIP TO CONTENT";
+
+
+        document.body.insertBefore(
+          skipLink,
+          document.body.firstChild
+        );
+
+
+        skipLink.addEventListener(
+          "click",
+          function () {
+
+
+            window.setTimeout(
+              function () {
+
+                mainContent.focus();
+
+              },
+              0
+            );
+
+
+          }
+        );
+
+
+      }
+
+
+
+      /* ======================================
+         NAVIGATION LABEL
+      ====================================== */
+
+      const primaryNavigation =
+        document.querySelector(
+          ".navigation"
+        );
+
+
+      if (primaryNavigation) {
+
+        primaryNavigation.setAttribute(
+          "aria-label",
+          "Primary navigation"
+        );
+
+      }
+
+
+    }
+
+
+
+    setupAccessibility();
+
+
+
+    /* ========================================
+       MAIN ELEMENTS
+    ======================================== */
+
+    const navigation =
+      document.querySelector(
+        ".navigation"
+      );
+
+
+    const mainMenu =
+      document.querySelector(
+        ".menu"
+      );
+
+
+    const menuItems =
+      Array.from(
+        document.querySelectorAll(
+          ".menu-item"
+        )
+      );
+
+
+
+    /* ========================================
+       MOBILE MENU
+    ======================================== */
+
+    let mobileMenuButton = null;
+
+
+
+    if (
+      navigation &&
       mainMenu
-    );
+    ) {
+
+
+      mainMenu.id =
+        "site-menu";
 
 
 
-    function setMobileMenu(open) {
+      mobileMenuButton =
+        document.createElement(
+          "button"
+        );
 
-      navigation.classList.toggle(
-        "mobile-menu-open",
-        open
+
+      mobileMenuButton.className =
+        "mobile-menu-toggle";
+
+
+      mobileMenuButton.type =
+        "button";
+
+
+      mobileMenuButton.setAttribute(
+        "aria-controls",
+        "site-menu"
       );
 
 
       mobileMenuButton.setAttribute(
         "aria-expanded",
-        open ? "true" : "false"
+        "false"
+      );
+
+
+      mobileMenuButton.setAttribute(
+        "aria-label",
+        "Open navigation menu"
       );
 
 
       mobileMenuButton.textContent =
-        open ? "CLOSE" : "MENU";
+        "MENU";
+
+
+      navigation.insertBefore(
+        mobileMenuButton,
+        mainMenu
+      );
+
+
+
+      function setMobileMenu(open) {
+
+
+        navigation.classList.toggle(
+          "mobile-menu-open",
+          open
+        );
+
+
+        mobileMenuButton.setAttribute(
+          "aria-expanded",
+          open
+            ? "true"
+            : "false"
+        );
+
+
+        mobileMenuButton.setAttribute(
+          "aria-label",
+          open
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+
+
+        mobileMenuButton.textContent =
+          open
+            ? "CLOSE"
+            : "MENU";
+
+
+      }
+
+
+
+      mobileMenuButton.addEventListener(
+        "click",
+        function () {
+
+
+          const isOpen =
+            navigation.classList.contains(
+              "mobile-menu-open"
+            );
+
+
+          setMobileMenu(
+            !isOpen
+          );
+
+
+        }
+      );
+
+
+
+      /* ======================================
+         CLOSE AFTER NORMAL LINK
+      ====================================== */
+
+      mainMenu.addEventListener(
+        "click",
+        function (event) {
+
+
+          const link =
+            event.target.closest(
+              "a"
+            );
+
+
+          if (
+            link &&
+            window.matchMedia(
+              "(max-width: 760px)"
+            ).matches
+          ) {
+
+            setMobileMenu(
+              false
+            );
+
+          }
+
+
+        }
+      );
+
+
+
+      /* ======================================
+         RETURN TO DESKTOP
+      ====================================== */
+
+      window.addEventListener(
+        "resize",
+        function () {
+
+
+          if (
+            window.matchMedia(
+              "(min-width: 761px)"
+            ).matches
+          ) {
+
+            setMobileMenu(
+              false
+            );
+
+          }
+
+
+        }
+      );
+
+
+
+      /* ======================================
+         ESCAPE
+      ====================================== */
+
+      document.addEventListener(
+        "keydown",
+        function (event) {
+
+
+          if (
+            event.key ===
+            "Escape"
+          ) {
+
+            setMobileMenu(
+              false
+            );
+
+          }
+
+
+        }
+      );
+
 
     }
 
 
 
-    mobileMenuButton.addEventListener(
-      "click",
-      function () {
+    /* ========================================
+       ??? NAVIGATION
+    ======================================== */
 
-        const isOpen =
-          navigation.classList.contains(
-            "mobile-menu-open"
-          );
-
-
-        setMobileMenu(!isOpen);
-
-      }
-    );
-
-
-
-    /* CLOSE AFTER CLICKING A NORMAL LINK */
-
-    mainMenu.addEventListener(
-      "click",
-      function (event) {
-
-        const link =
-          event.target.closest("a");
-
-
-        if (
-          link &&
-          window.matchMedia(
-            "(max-width: 760px)"
-          ).matches
-        ) {
-
-          setMobileMenu(false);
-
-        }
-
-      }
-    );
-
-
-
-    /* CLOSE WHEN RETURNING TO DESKTOP */
-
-    window.addEventListener(
-      "resize",
-      function () {
-
-        if (
-          window.matchMedia(
-            "(min-width: 761px)"
-          ).matches
-        ) {
-
-          setMobileMenu(false);
-
-        }
-
-      }
-    );
-
-
-
-    /* ESCAPE CLOSES MOBILE MENU */
-
-    document.addEventListener(
-      "keydown",
-      function (event) {
-
-        if (event.key === "Escape") {
-
-          setMobileMenu(false);
-
-        }
-
-      }
-    );
-
-  }
-
-
-
-  /* ========================================
-     ??? NAVIGATION
-     TURN PLAY INTO ???
-  ======================================== */
-
-  let chaosNav =
-    document.querySelector(
-      "[data-chaos-nav]"
-    );
-
-
-  if (!chaosNav) {
-
-    chaosNav =
-      menuItems.find(
-        function (item) {
-
-          const text =
-            item.textContent.trim();
-
-          return (
-            text === "PLAY" ||
-            text === "???"
-          );
-
-        }
+    let chaosNav =
+      document.querySelector(
+        "[data-chaos-nav]"
       );
 
-  }
+
+
+    if (!chaosNav) {
+
+
+      chaosNav =
+        menuItems.find(
+          function (item) {
+
+
+            const text =
+              item
+                .textContent
+                .trim();
+
+
+            return (
+              text === "PLAY" ||
+              text === "???"
+            );
+
+
+          }
+        );
+
+
+    }
 
 
 
-  if (chaosNav) {
-
-    chaosNav.href =
-      "unknown.html";
+    if (chaosNav) {
 
 
-    chaosNav.classList.add(
-      "chaos-nav"
-    );
+      chaosNav.href =
+        "unknown.html";
 
-
-    chaosNav.setAttribute(
-      "data-chaos-nav",
-      ""
-    );
-
-
-    chaosNav.setAttribute(
-      "data-text",
-      "???"
-    );
-
-
-    chaosNav.innerHTML =
-      '<span class="chaos-nav-text">???</span>';
-
-
-
-    if (
-      document.body.classList.contains(
-        "chaos-page-body"
-      )
-    ) {
 
       chaosNav.classList.add(
-        "active"
+        "chaos-nav"
       );
-
-    }
-
-
-
-    const chaosWords = [
-      "???",
-      "404",
-      "VOID",
-      "PLAY?",
-      "NOPE",
-      "!!!",
-      "???"
-    ];
-
-
-    const chaosNavText =
-      chaosNav.querySelector(
-        ".chaos-nav-text"
-      );
-
-
-    let chaosGlitchTimer = null;
-
-
-
-    function setChaosWord(word) {
-
-      chaosNavText.textContent =
-        word;
 
 
       chaosNav.setAttribute(
-        "data-text",
-        word
-      );
-
-    }
-
-
-
-    function startChaosGlitch() {
-
-      if (chaosGlitchTimer) {
-        return;
-      }
-
-
-      chaosNav.classList.add(
-        "is-glitching"
-      );
-
-
-      chaosGlitchTimer =
-        window.setInterval(
-          function () {
-
-            const randomIndex =
-              Math.floor(
-                Math.random() *
-                chaosWords.length
-              );
-
-
-            setChaosWord(
-              chaosWords[randomIndex]
-            );
-
-          },
-          85
-        );
-
-    }
-
-
-
-    function stopChaosGlitch() {
-
-      window.clearInterval(
-        chaosGlitchTimer
-      );
-
-
-      chaosGlitchTimer = null;
-
-
-      chaosNav.classList.remove(
-        "is-glitching"
-      );
-
-
-      setChaosWord("???");
-
-    }
-
-
-
-    chaosNav.addEventListener(
-      "mouseenter",
-      startChaosGlitch
-    );
-
-
-    chaosNav.addEventListener(
-      "mouseleave",
-      stopChaosGlitch
-    );
-
-
-    chaosNav.addEventListener(
-      "focus",
-      startChaosGlitch
-    );
-
-
-    chaosNav.addEventListener(
-      "blur",
-      stopChaosGlitch
-    );
-
-  }
-
-
-
-  /* ========================================
-     CONTACT NAVIGATION
-  ======================================== */
-
-  const contactNav =
-    menuItems.find(
-      function (item) {
-
-        return (
-          item.textContent.trim() ===
-          "CONTACT"
-        );
-
-      }
-    );
-
-
-  if (contactNav) {
-
-    contactNav.href =
-      "contact.html";
-
-
-    if (
-      document.body.classList.contains(
-        "contact-page-body"
-      )
-    ) {
-
-      contactNav.classList.add(
-        "active"
-      );
-
-    }
-
-  }
-
-
-
-  /* ========================================
-     COPY EMAIL
-  ======================================== */
-
-  const copyEmailButton =
-    document.querySelector(
-      "[data-copy-email]"
-    );
-
-
-  if (copyEmailButton) {
-
-    const originalButtonText =
-      copyEmailButton.textContent.trim();
-
-
-
-    function showCopiedState() {
-
-      copyEmailButton.textContent =
-        "COPIED!";
-
-
-      copyEmailButton.classList.add(
-        "is-copied"
-      );
-
-
-      window.setTimeout(
-        function () {
-
-          copyEmailButton.textContent =
-            originalButtonText;
-
-
-          copyEmailButton.classList.remove(
-            "is-copied"
-          );
-
-        },
-        1600
-      );
-
-    }
-
-
-
-    function fallbackCopy(text) {
-
-      const textarea =
-        document.createElement(
-          "textarea"
-        );
-
-
-      textarea.value = text;
-
-      textarea.setAttribute(
-        "readonly",
+        "data-chaos-nav",
         ""
       );
 
 
-      textarea.style.position =
-        "fixed";
-
-
-      textarea.style.opacity =
-        "0";
-
-
-      document.body.appendChild(
-        textarea
+      chaosNav.setAttribute(
+        "data-text",
+        "???"
       );
 
 
-      textarea.select();
+      chaosNav.innerHTML =
+        '<span class="chaos-nav-text">???</span>';
 
 
-      try {
 
-        document.execCommand("copy");
+      /* CURRENT PAGE */
 
-        showCopiedState();
+      if (
+        document.body.classList.contains(
+          "chaos-page-body"
+        )
+      ) {
 
-      }
-
-      catch (error) {
-
-        copyEmailButton.textContent =
-          "COPY FAILED";
+        chaosNav.classList.add(
+          "active"
+        );
 
       }
 
 
-      document.body.removeChild(
-        textarea
-      );
 
-    }
+      /* ======================================
+         GLITCH WORDS
+      ====================================== */
+
+      const chaosWords = [
+
+        "???",
+        "404",
+        "VOID",
+        "PLAY?",
+        "NOPE",
+        "!!!",
+        "???"
+
+      ];
+
+
+      const chaosNavText =
+        chaosNav.querySelector(
+          ".chaos-nav-text"
+        );
+
+
+      let chaosGlitchTimer =
+        null;
 
 
 
-    copyEmailButton.addEventListener(
-      "click",
-      function () {
-
-        const email =
-          copyEmailButton.getAttribute(
-            "data-email"
-          );
+      function setChaosWord(
+        word
+      ) {
 
 
-        if (!email) {
+        chaosNavText.textContent =
+          word;
+
+
+        chaosNav.setAttribute(
+          "data-text",
+          word
+        );
+
+
+      }
+
+
+
+      function startChaosGlitch() {
+
+
+        if (chaosGlitchTimer) {
           return;
         }
 
 
-        if (
-          navigator.clipboard &&
-          window.isSecureContext
-        ) {
+        chaosNav.classList.add(
+          "is-glitching"
+        );
 
-          navigator.clipboard
-            .writeText(email)
-            .then(showCopiedState)
-            .catch(
-              function () {
 
-                fallbackCopy(email);
+        chaosGlitchTimer =
+          window.setInterval(
+            function () {
 
-              }
+
+              const randomIndex =
+                Math.floor(
+                  Math.random() *
+                  chaosWords.length
+                );
+
+
+              setChaosWord(
+                chaosWords[
+                  randomIndex
+                ]
+              );
+
+
+            },
+            85
+          );
+
+
+      }
+
+
+
+      function stopChaosGlitch() {
+
+
+        window.clearInterval(
+          chaosGlitchTimer
+        );
+
+
+        chaosGlitchTimer =
+          null;
+
+
+        chaosNav.classList.remove(
+          "is-glitching"
+        );
+
+
+        setChaosWord(
+          "???"
+        );
+
+
+      }
+
+
+
+      chaosNav.addEventListener(
+        "mouseenter",
+        startChaosGlitch
+      );
+
+
+      chaosNav.addEventListener(
+        "mouseleave",
+        stopChaosGlitch
+      );
+
+
+      chaosNav.addEventListener(
+        "focus",
+        startChaosGlitch
+      );
+
+
+      chaosNav.addEventListener(
+        "blur",
+        stopChaosGlitch
+      );
+
+
+    }
+
+
+
+    /* ========================================
+       CONTACT NAVIGATION
+    ======================================== */
+
+    const contactNav =
+      menuItems.find(
+        function (item) {
+
+
+          return (
+            item
+              .textContent
+              .trim() ===
+            "CONTACT"
+          );
+
+
+        }
+      );
+
+
+
+    if (contactNav) {
+
+
+      contactNav.href =
+        "contact.html";
+
+
+      if (
+        document.body.classList.contains(
+          "contact-page-body"
+        )
+      ) {
+
+        contactNav.classList.add(
+          "active"
+        );
+
+      }
+
+
+    }
+
+
+
+    /* ========================================
+       COPY EMAIL
+    ======================================== */
+
+    const copyEmailButton =
+      document.querySelector(
+        "[data-copy-email]"
+      );
+
+
+
+    if (copyEmailButton) {
+
+
+      copyEmailButton.setAttribute(
+        "aria-live",
+        "polite"
+      );
+
+
+      copyEmailButton.setAttribute(
+        "aria-atomic",
+        "true"
+      );
+
+
+      const originalButtonText =
+        copyEmailButton
+          .textContent
+          .trim();
+
+
+
+      function showCopiedState() {
+
+
+        copyEmailButton.textContent =
+          "COPIED!";
+
+
+        copyEmailButton.classList.add(
+          "is-copied"
+        );
+
+
+        window.setTimeout(
+          function () {
+
+
+            copyEmailButton.textContent =
+              originalButtonText;
+
+
+            copyEmailButton.classList.remove(
+              "is-copied"
             );
 
-        }
 
-        else {
-
-          fallbackCopy(email);
-
-        }
-
-      }
-    );
-
-  }
-
-
-
-  /* ========================================
-     WORK DROPDOWN
-  ======================================== */
-
-  const workMenu =
-    document.querySelector(
-      "[data-work-menu]"
-    );
-
-
-  const workToggle =
-    document.querySelector(
-      "[data-work-toggle]"
-    );
-
-
-
-  function closeWorkMenu() {
-
-    if (!workMenu || !workToggle) {
-      return;
-    }
-
-
-    workMenu.classList.remove(
-      "is-open"
-    );
-
-
-    workToggle.setAttribute(
-      "aria-expanded",
-      "false"
-    );
-
-  }
-
-
-
-  if (workMenu && workToggle) {
-
-    workToggle.addEventListener(
-      "click",
-      function (event) {
-
-        event.stopPropagation();
-
-
-        const isOpen =
-          workMenu.classList.toggle(
-            "is-open"
-          );
-
-
-        workToggle.setAttribute(
-          "aria-expanded",
-          isOpen
-            ? "true"
-            : "false"
-        );
-
-      }
-    );
-
-
-
-    document.addEventListener(
-      "click",
-      function (event) {
-
-        if (
-          !workMenu.contains(
-            event.target
-          )
-        ) {
-
-          closeWorkMenu();
-
-        }
-
-      }
-    );
-
-
-
-    document.addEventListener(
-      "keydown",
-      function (event) {
-
-        if (event.key === "Escape") {
-
-          closeWorkMenu();
-
-        }
-
-      }
-    );
-
-  }
-
-
-
-  /* ========================================
-     WORK FILTER
-  ======================================== */
-
-  const projectCards =
-    document.querySelectorAll(
-      "[data-project-card]"
-    );
-
-
-  const filterButtons =
-    document.querySelectorAll(
-      "[data-filter]"
-    );
-
-
-  const dropdownLinks =
-    document.querySelectorAll(
-      "[data-dropdown-filter]"
-    );
-
-
-  const workEmpty =
-    document.querySelector(
-      "[data-work-empty]"
-    );
-
-
-  const allowedFilters = [
-    "all",
-    "kv",
-    "illustration",
-    "motion",
-    "3d",
-    "fine-art"
-  ];
-
-
-
-  function applyFilter(
-    filterName,
-    updateURL
-  ) {
-
-    let selectedFilter =
-      (
-        filterName ||
-        "all"
-      ).toLowerCase();
-
-
-
-    if (
-      !allowedFilters.includes(
-        selectedFilter
-      )
-    ) {
-
-      selectedFilter =
-        "all";
-
-    }
-
-
-
-    let visibleProjects = 0;
-
-
-
-    projectCards.forEach(
-      function (card) {
-
-        const categoryString =
-          card.getAttribute(
-            "data-categories"
-          ) || "";
-
-
-        const categories =
-          categoryString
-            .toLowerCase()
-            .split(" ")
-            .filter(Boolean);
-
-
-        const shouldShow =
-          selectedFilter === "all" ||
-          categories.includes(
-            selectedFilter
-          );
-
-
-        if (shouldShow) {
-
-          card.hidden = false;
-
-          card.style.display = "";
-
-          visibleProjects++;
-
-        }
-
-        else {
-
-          card.hidden = true;
-
-          card.style.display = "none";
-
-        }
-
-      }
-    );
-
-
-
-    filterButtons.forEach(
-      function (button) {
-
-        const isActive =
-          button.dataset.filter ===
-          selectedFilter;
-
-
-        button.classList.toggle(
-          "is-active",
-          isActive
+          },
+          1600
         );
 
 
-        button.setAttribute(
-          "aria-pressed",
-          isActive
-            ? "true"
-            : "false"
-        );
-
-      }
-    );
-
-
-
-    dropdownLinks.forEach(
-      function (link) {
-
-        const isActive =
-          link.dataset.dropdownFilter ===
-          selectedFilter;
-
-
-        link.classList.toggle(
-          "is-active",
-          isActive
-        );
-
-      }
-    );
-
-
-
-    if (workEmpty) {
-
-      if (visibleProjects === 0) {
-
-        workEmpty.hidden = false;
-
-        workEmpty.style.display =
-          "block";
-
       }
 
-      else {
-
-        workEmpty.hidden = true;
-
-        workEmpty.style.display =
-          "none";
-
-      }
-
-    }
 
 
+      function fallbackCopy(
+        text
+      ) {
 
-    if (
-      updateURL &&
-      projectCards.length > 0
-    ) {
 
-      try {
-
-        const url =
-          new URL(
-            window.location.href
+        const textarea =
+          document.createElement(
+            "textarea"
           );
 
 
-        if (
-          selectedFilter === "all"
-        ) {
+        textarea.value =
+          text;
 
-          url.searchParams.delete(
-            "filter"
+
+        textarea.setAttribute(
+          "readonly",
+          ""
+        );
+
+
+        textarea.style.position =
+          "fixed";
+
+
+        textarea.style.opacity =
+          "0";
+
+
+        document.body.appendChild(
+          textarea
+        );
+
+
+        textarea.select();
+
+
+
+        try {
+
+
+          document.execCommand(
+            "copy"
           );
+
+
+          showCopiedState();
+
 
         }
 
-        else {
+        catch (error) {
 
-          url.searchParams.set(
-            "filter",
-            selectedFilter
-          );
+
+          copyEmailButton.textContent =
+            "COPY FAILED";
+
 
         }
 
 
-        window.history.replaceState(
-          {},
-          "",
-          url
+
+        document.body.removeChild(
+          textarea
         );
 
-      }
-
-      catch (error) {
-
-        /*
-          FILTER STILL WORKS
-          IN LOCAL FILE MODE
-        */
 
       }
 
-    }
-
-  }
 
 
-
-  /* ========================================
-     FILTER BUTTON CLICK
-  ======================================== */
-
-  filterButtons.forEach(
-    function (button) {
-
-      button.addEventListener(
+      copyEmailButton.addEventListener(
         "click",
         function () {
 
-          applyFilter(
-            button.dataset.filter,
-            true
-          );
+
+          const email =
+            copyEmailButton.getAttribute(
+              "data-email"
+            );
+
+
+          if (!email) {
+            return;
+          }
+
+
+
+          if (
+            navigator.clipboard &&
+            window.isSecureContext
+          ) {
+
+
+            navigator.clipboard
+              .writeText(
+                email
+              )
+              .then(
+                showCopiedState
+              )
+              .catch(
+                function () {
+
+                  fallbackCopy(
+                    email
+                  );
+
+                }
+              );
+
+
+          }
+
+          else {
+
+
+            fallbackCopy(
+              email
+            );
+
+
+          }
+
 
         }
       );
 
+
     }
-  );
 
 
 
-  /* ========================================
-     FILTER FROM URL
-  ======================================== */
+    /* ========================================
+       WORK DROPDOWN
+    ======================================== */
 
-  if (projectCards.length > 0) {
-
-    const params =
-      new URLSearchParams(
-        window.location.search
+    const workMenu =
+      document.querySelector(
+        "[data-work-menu]"
       );
 
 
-    const startingFilter =
-      params.get("filter") ||
-      "all";
+    const workToggle =
+      document.querySelector(
+        "[data-work-toggle]"
+      );
 
 
-    applyFilter(
-      startingFilter,
-      false
-    );
-
-  }
-
-
-
-  /* ========================================
-     ??? CHAOS PAGE
-  ======================================== */
-
-  const chaosSpace =
-    document.querySelector(
-      "[data-chaos-space]"
-    );
-
-
-  const chaosCards =
-    Array.from(
-      document.querySelectorAll(
-        "[data-chaos-card]"
-      )
-    );
-
-
-  const scrambleButton =
-    document.querySelector(
-      "[data-chaos-scramble]"
-    );
+    const workDropdown =
+      workMenu
+        ? workMenu.querySelector(
+            ".work-dropdown"
+          )
+        : null;
 
 
 
-  if (
-    chaosSpace &&
-    chaosCards.length > 0
-  ) {
-
-    let topZIndex = 20;
-
-    let activeCard = null;
-
-    let pointerOffsetX = 0;
-    let pointerOffsetY = 0;
+    if (
+      workToggle &&
+      workDropdown
+    ) {
 
 
+      workDropdown.id =
+        "work-dropdown";
 
-    function isChaosDesktop() {
 
-      return window.matchMedia(
-        "(min-width: 761px)"
-      ).matches;
+      workToggle.setAttribute(
+        "aria-controls",
+        "work-dropdown"
+      );
+
 
     }
 
 
 
-    function scatterChaosCards() {
+    function closeWorkMenu() {
 
 
-      /* MOBILE */
-
-      if (!isChaosDesktop()) {
-
-        chaosCards.forEach(
-          function (card) {
-
-            const rotation =
-              (
-                Math.random() * 4
-              ) - 2;
-
-
-            card.style.left = "";
-            card.style.top = "";
-            card.style.zIndex = "";
-
-
-            card.style.setProperty(
-              "--mobile-chaos-rotation",
-              rotation + "deg"
-            );
-
-          }
-        );
-
+      if (
+        !workMenu ||
+        !workToggle
+      ) {
 
         return;
 
       }
 
 
-
-      /* DESKTOP */
-
-      const spaceWidth =
-        chaosSpace.clientWidth;
-
-
-      const spaceHeight =
-        chaosSpace.clientHeight;
-
-
-
-      chaosCards.forEach(
-        function (card, index) {
-
-          const cardWidth =
-            card.offsetWidth;
-
-
-          const cardHeight =
-            card.offsetHeight;
-
-
-          const maxX =
-            Math.max(
-              20,
-              spaceWidth -
-              cardWidth -
-              20
-            );
-
-
-          const maxY =
-            Math.max(
-              20,
-              spaceHeight -
-              cardHeight -
-              20
-            );
-
-
-          const x =
-            Math.random() *
-            maxX;
-
-
-          const y =
-            Math.random() *
-            maxY;
-
-
-          const rotation =
-            (
-              Math.random() * 16
-            ) - 8;
-
-
-          card.style.left =
-            x + "px";
-
-
-          card.style.top =
-            y + "px";
-
-
-          card.style.transform =
-            "rotate(" +
-            rotation +
-            "deg)";
-
-
-          card.style.zIndex =
-            10 + index;
-
-        }
+      workMenu.classList.remove(
+        "is-open"
       );
+
+
+      workToggle.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
 
     }
 
 
 
-    /* ========================================
-       SCRAMBLE
-    ======================================== */
+    if (
+      workMenu &&
+      workToggle
+    ) {
 
-    if (scrambleButton) {
 
-      scrambleButton.addEventListener(
+      workToggle.addEventListener(
         "click",
-        function () {
-
-          scatterChaosCards();
+        function (event) {
 
 
-          scrambleButton.classList.add(
-            "is-scrambling"
+          event.stopPropagation();
+
+
+          const isOpen =
+            workMenu.classList.toggle(
+              "is-open"
+            );
+
+
+          workToggle.setAttribute(
+            "aria-expanded",
+            isOpen
+              ? "true"
+              : "false"
           );
 
-
-          window.setTimeout(
-            function () {
-
-              scrambleButton.classList.remove(
-                "is-scrambling"
-              );
-
-            },
-            250
-          );
 
         }
       );
 
-    }
+
+
+      document.addEventListener(
+        "click",
+        function (event) {
+
+
+          if (
+            !workMenu.contains(
+              event.target
+            )
+          ) {
+
+            closeWorkMenu();
+
+          }
+
+
+        }
+      );
 
 
 
-    /* ========================================
-       DRAG
-    ======================================== */
+      document.addEventListener(
+        "keydown",
+        function (event) {
 
-    chaosCards.forEach(
-      function (card) {
 
-        card.addEventListener(
-          "pointerdown",
-          function (event) {
+          if (
+            event.key ===
+            "Escape"
+          ) {
+
+
+            closeWorkMenu();
+
 
             if (
-              !isChaosDesktop() ||
-              event.button !== 0
+              document.activeElement &&
+              workMenu.contains(
+                document.activeElement
+              )
             ) {
 
-              return;
+              workToggle.focus();
 
             }
 
 
-            event.preventDefault();
-
-
-            activeCard = card;
-
-
-            const cardRect =
-              card.getBoundingClientRect();
-
-
-            pointerOffsetX =
-              event.clientX -
-              cardRect.left;
-
-
-            pointerOffsetY =
-              event.clientY -
-              cardRect.top;
-
-
-            topZIndex++;
-
-
-            card.style.zIndex =
-              topZIndex;
-
-
-            card.classList.add(
-              "is-dragging"
-            );
-
           }
-        );
 
-      }
-    );
-
-
-
-    document.addEventListener(
-      "pointermove",
-      function (event) {
-
-        if (
-          !activeCard ||
-          !isChaosDesktop()
-        ) {
-
-          return;
 
         }
-
-
-        const spaceRect =
-          chaosSpace.getBoundingClientRect();
-
-
-        let x =
-          event.clientX -
-          spaceRect.left -
-          pointerOffsetX;
-
-
-        let y =
-          event.clientY -
-          spaceRect.top -
-          pointerOffsetY;
-
-
-        const maxX =
-          chaosSpace.clientWidth -
-          activeCard.offsetWidth;
-
-
-        const maxY =
-          chaosSpace.clientHeight -
-          activeCard.offsetHeight;
-
-
-        x =
-          Math.max(
-            0,
-            Math.min(
-              x,
-              maxX
-            )
-          );
-
-
-        y =
-          Math.max(
-            0,
-            Math.min(
-              y,
-              maxY
-            )
-          );
-
-
-        activeCard.style.left =
-          x + "px";
-
-
-        activeCard.style.top =
-          y + "px";
-
-      }
-    );
-
-
-
-    function releaseChaosCard() {
-
-      if (!activeCard) {
-        return;
-      }
-
-
-      activeCard.classList.remove(
-        "is-dragging"
       );
 
-
-      activeCard = null;
 
     }
 
 
 
-    document.addEventListener(
-      "pointerup",
-      releaseChaosCard
-    );
+    /* ========================================
+       WORK FILTER
+    ======================================== */
+
+    const projectCards =
+      document.querySelectorAll(
+        "[data-project-card]"
+      );
 
 
-    document.addEventListener(
-      "pointercancel",
-      releaseChaosCard
-    );
+    const filterButtons =
+      document.querySelectorAll(
+        "[data-filter]"
+      );
+
+
+    const dropdownLinks =
+      document.querySelectorAll(
+        "[data-dropdown-filter]"
+      );
+
+
+    const workEmpty =
+      document.querySelector(
+        "[data-work-empty]"
+      );
 
 
 
-    /* FIRST SCATTER */
+    const allowedFilters = [
 
-    window.setTimeout(
-      scatterChaosCards,
-      100
-    );
+      "all",
+      "kv",
+      "illustration",
+      "motion",
+      "3d",
+      "fine-art"
 
-
-    window.addEventListener(
-      "load",
-      scatterChaosCards
-    );
+    ];
 
 
 
-    /* RESIZE */
+    /* ========================================
+       FILTER STATUS FOR SCREEN READERS
+    ======================================== */
 
-    let chaosResizeTimer;
+    let filterStatus =
+      null;
 
 
-    window.addEventListener(
-      "resize",
-      function () {
 
-        window.clearTimeout(
-          chaosResizeTimer
+    if (
+      projectCards.length > 0
+    ) {
+
+
+      filterStatus =
+        document.createElement(
+          "p"
         );
 
 
-        chaosResizeTimer =
-          window.setTimeout(
-            scatterChaosCards,
-            150
+      filterStatus.className =
+        "sr-only";
+
+
+      filterStatus.setAttribute(
+        "aria-live",
+        "polite"
+      );
+
+
+      filterStatus.setAttribute(
+        "aria-atomic",
+        "true"
+      );
+
+
+      const workGrid =
+        document.querySelector(
+          ".work-grid"
+        );
+
+
+      if (workGrid) {
+
+
+        workGrid.insertBefore(
+          filterStatus,
+          workGrid.firstChild
+        );
+
+
+      }
+
+
+    }
+
+
+
+    function applyFilter(
+      filterName,
+      updateURL
+    ) {
+
+
+      let selectedFilter =
+        (
+          filterName ||
+          "all"
+        ).toLowerCase();
+
+
+
+      if (
+        !allowedFilters.includes(
+          selectedFilter
+        )
+      ) {
+
+        selectedFilter =
+          "all";
+
+      }
+
+
+
+      let visibleProjects =
+        0;
+
+
+
+      /* ======================================
+         SHOW / HIDE PROJECT
+      ====================================== */
+
+      projectCards.forEach(
+        function (card) {
+
+
+          const categoryString =
+            card.getAttribute(
+              "data-categories"
+            ) || "";
+
+
+          const categories =
+            categoryString
+              .toLowerCase()
+              .split(" ")
+              .filter(
+                Boolean
+              );
+
+
+          const shouldShow =
+            selectedFilter ===
+              "all" ||
+            categories.includes(
+              selectedFilter
+            );
+
+
+
+          if (shouldShow) {
+
+
+            card.hidden =
+              false;
+
+
+            card.style.display =
+              "";
+
+
+            visibleProjects++;
+
+
+          }
+
+          else {
+
+
+            card.hidden =
+              true;
+
+
+            card.style.display =
+              "none";
+
+
+          }
+
+
+        }
+      );
+
+
+
+      /* ======================================
+         FILTER BUTTON STATE
+      ====================================== */
+
+      filterButtons.forEach(
+        function (button) {
+
+
+          const isActive =
+            button.dataset.filter ===
+            selectedFilter;
+
+
+          button.classList.toggle(
+            "is-active",
+            isActive
           );
+
+
+          button.setAttribute(
+            "aria-pressed",
+            isActive
+              ? "true"
+              : "false"
+          );
+
+
+        }
+      );
+
+
+
+      /* ======================================
+         DROPDOWN STATE
+      ====================================== */
+
+      dropdownLinks.forEach(
+        function (link) {
+
+
+          const isActive =
+            link.dataset.dropdownFilter ===
+            selectedFilter;
+
+
+          link.classList.toggle(
+            "is-active",
+            isActive
+          );
+
+
+        }
+      );
+
+
+
+      /* ======================================
+         EMPTY MESSAGE
+      ====================================== */
+
+      if (workEmpty) {
+
+
+        if (
+          visibleProjects ===
+          0
+        ) {
+
+
+          workEmpty.hidden =
+            false;
+
+
+          workEmpty.style.display =
+            "block";
+
+
+        }
+
+        else {
+
+
+          workEmpty.hidden =
+            true;
+
+
+          workEmpty.style.display =
+            "none";
+
+
+        }
+
+
+      }
+
+
+
+      /* ======================================
+         ACCESSIBLE FILTER STATUS
+      ====================================== */
+
+      if (filterStatus) {
+
+
+        const filterLabel =
+          selectedFilter ===
+            "all"
+            ? "all categories"
+            : selectedFilter;
+
+
+        filterStatus.textContent =
+          visibleProjects +
+          (
+            visibleProjects === 1
+              ? " project shown for "
+              : " projects shown for "
+          ) +
+          filterLabel +
+          ".";
+
+
+      }
+
+
+
+      /* ======================================
+         URL
+      ====================================== */
+
+      if (
+        updateURL &&
+        projectCards.length > 0
+      ) {
+
+
+        try {
+
+
+          const url =
+            new URL(
+              window.location.href
+            );
+
+
+          if (
+            selectedFilter ===
+            "all"
+          ) {
+
+
+            url.searchParams.delete(
+              "filter"
+            );
+
+
+          }
+
+          else {
+
+
+            url.searchParams.set(
+              "filter",
+              selectedFilter
+            );
+
+
+          }
+
+
+          window.history.replaceState(
+            {},
+            "",
+            url
+          );
+
+
+        }
+
+        catch (error) {
+
+
+          /*
+            FILTER STILL WORKS
+            IN LOCAL FILE MODE
+          */
+
+
+        }
+
+
+      }
+
+
+    }
+
+
+
+    /* ========================================
+       FILTER BUTTON CLICK
+    ======================================== */
+
+    filterButtons.forEach(
+      function (button) {
+
+
+        button.addEventListener(
+          "click",
+          function () {
+
+
+            applyFilter(
+              button.dataset.filter,
+              true
+            );
+
+
+          }
+        );
+
 
       }
     );
 
+
+
+    /* ========================================
+       FILTER FROM URL
+    ======================================== */
+
+    if (
+      projectCards.length > 0
+    ) {
+
+
+      const params =
+        new URLSearchParams(
+          window.location.search
+        );
+
+
+      const startingFilter =
+        params.get(
+          "filter"
+        ) ||
+        "all";
+
+
+      applyFilter(
+        startingFilter,
+        false
+      );
+
+
+    }
+
+
+
+    /* ========================================
+       ??? CHAOS PAGE
+    ======================================== */
+
+    const chaosSpace =
+      document.querySelector(
+        "[data-chaos-space]"
+      );
+
+
+    const chaosCards =
+      Array.from(
+        document.querySelectorAll(
+          "[data-chaos-card]"
+        )
+      );
+
+
+    const scrambleButton =
+      document.querySelector(
+        "[data-chaos-scramble]"
+      );
+
+
+
+    if (
+      chaosSpace &&
+      chaosCards.length > 0
+    ) {
+
+
+      let topZIndex =
+        20;
+
+
+      let activeCard =
+        null;
+
+
+      let pointerOffsetX =
+        0;
+
+
+      let pointerOffsetY =
+        0;
+
+
+
+      function isChaosDesktop() {
+
+
+        return window.matchMedia(
+          "(min-width: 761px)"
+        ).matches;
+
+
+      }
+
+
+
+      /* ======================================
+         SCATTER
+      ====================================== */
+
+      function scatterChaosCards() {
+
+
+        /* MOBILE */
+
+        if (
+          !isChaosDesktop()
+        ) {
+
+
+          chaosCards.forEach(
+            function (card) {
+
+
+              const rotation =
+                (
+                  Math.random() *
+                  4
+                ) -
+                2;
+
+
+              card.style.left =
+                "";
+
+
+              card.style.top =
+                "";
+
+
+              card.style.zIndex =
+                "";
+
+
+              card.style.setProperty(
+                "--mobile-chaos-rotation",
+                rotation +
+                "deg"
+              );
+
+
+            }
+          );
+
+
+          return;
+
+
+        }
+
+
+
+        /* DESKTOP */
+
+        const spaceWidth =
+          chaosSpace.clientWidth;
+
+
+        const spaceHeight =
+          chaosSpace.clientHeight;
+
+
+
+        chaosCards.forEach(
+          function (
+            card,
+            index
+          ) {
+
+
+            const cardWidth =
+              card.offsetWidth;
+
+
+            const cardHeight =
+              card.offsetHeight;
+
+
+            const maxX =
+              Math.max(
+                20,
+                spaceWidth -
+                cardWidth -
+                20
+              );
+
+
+            const maxY =
+              Math.max(
+                20,
+                spaceHeight -
+                cardHeight -
+                20
+              );
+
+
+            const x =
+              Math.random() *
+              maxX;
+
+
+            const y =
+              Math.random() *
+              maxY;
+
+
+            const rotation =
+              (
+                Math.random() *
+                16
+              ) -
+              8;
+
+
+            card.style.left =
+              x +
+              "px";
+
+
+            card.style.top =
+              y +
+              "px";
+
+
+            card.style.transform =
+              "rotate(" +
+              rotation +
+              "deg)";
+
+
+            card.style.zIndex =
+              10 +
+              index;
+
+
+          }
+        );
+
+
+      }
+
+
+
+      /* ======================================
+         SCRAMBLE
+      ====================================== */
+
+      if (
+        scrambleButton
+      ) {
+
+
+        scrambleButton.addEventListener(
+          "click",
+          function () {
+
+
+            scatterChaosCards();
+
+
+            scrambleButton.classList.add(
+              "is-scrambling"
+            );
+
+
+            window.setTimeout(
+              function () {
+
+
+                scrambleButton.classList.remove(
+                  "is-scrambling"
+                );
+
+
+              },
+              250
+            );
+
+
+          }
+        );
+
+
+      }
+
+
+
+      /* ======================================
+         DRAG
+      ====================================== */
+
+      chaosCards.forEach(
+        function (card) {
+
+
+          card.addEventListener(
+            "pointerdown",
+            function (event) {
+
+
+              if (
+                !isChaosDesktop() ||
+                event.button !==
+                  0
+              ) {
+
+                return;
+
+              }
+
+
+              event.preventDefault();
+
+
+              activeCard =
+                card;
+
+
+              const cardRect =
+                card.getBoundingClientRect();
+
+
+              pointerOffsetX =
+                event.clientX -
+                cardRect.left;
+
+
+              pointerOffsetY =
+                event.clientY -
+                cardRect.top;
+
+
+              topZIndex++;
+
+
+              card.style.zIndex =
+                topZIndex;
+
+
+              card.classList.add(
+                "is-dragging"
+              );
+
+
+            }
+          );
+
+
+        }
+      );
+
+
+
+      document.addEventListener(
+        "pointermove",
+        function (event) {
+
+
+          if (
+            !activeCard ||
+            !isChaosDesktop()
+          ) {
+
+            return;
+
+          }
+
+
+          const spaceRect =
+            chaosSpace.getBoundingClientRect();
+
+
+          let x =
+            event.clientX -
+            spaceRect.left -
+            pointerOffsetX;
+
+
+          let y =
+            event.clientY -
+            spaceRect.top -
+            pointerOffsetY;
+
+
+          const maxX =
+            chaosSpace.clientWidth -
+            activeCard.offsetWidth;
+
+
+          const maxY =
+            chaosSpace.clientHeight -
+            activeCard.offsetHeight;
+
+
+          x =
+            Math.max(
+              0,
+              Math.min(
+                x,
+                maxX
+              )
+            );
+
+
+          y =
+            Math.max(
+              0,
+              Math.min(
+                y,
+                maxY
+              )
+            );
+
+
+          activeCard.style.left =
+            x +
+            "px";
+
+
+          activeCard.style.top =
+            y +
+            "px";
+
+
+        }
+      );
+
+
+
+      function releaseChaosCard() {
+
+
+        if (!activeCard) {
+          return;
+        }
+
+
+        activeCard.classList.remove(
+          "is-dragging"
+        );
+
+
+        activeCard =
+          null;
+
+
+      }
+
+
+
+      document.addEventListener(
+        "pointerup",
+        releaseChaosCard
+      );
+
+
+      document.addEventListener(
+        "pointercancel",
+        releaseChaosCard
+      );
+
+
+
+      /* ======================================
+         FIRST SCATTER
+      ====================================== */
+
+      window.setTimeout(
+        scatterChaosCards,
+        100
+      );
+
+
+      window.addEventListener(
+        "load",
+        scatterChaosCards
+      );
+
+
+
+      /* ======================================
+         RESIZE
+      ====================================== */
+
+      let chaosResizeTimer;
+
+
+
+      window.addEventListener(
+        "resize",
+        function () {
+
+
+          window.clearTimeout(
+            chaosResizeTimer
+          );
+
+
+          chaosResizeTimer =
+            window.setTimeout(
+              scatterChaosCards,
+              150
+            );
+
+
+        }
+      );
+
+
+    }
+
+
+
+    /* ========================================
+       CURRENT PAGE SEMANTICS
+    ======================================== */
+
+    function setCurrentPageSemantics() {
+
+
+      document
+        .querySelectorAll(
+          '[aria-current="page"]'
+        )
+        .forEach(
+          function (element) {
+
+
+            element.removeAttribute(
+              "aria-current"
+            );
+
+
+          }
+        );
+
+
+
+      /* HOME */
+
+      const path =
+        window.location.pathname;
+
+
+      const isHome =
+        path.endsWith("/") ||
+        path.endsWith(
+          "/index.html"
+        );
+
+
+
+      if (isHome) {
+
+
+        const logo =
+          document.querySelector(
+            ".logo"
+          );
+
+
+        if (logo) {
+
+
+          logo.setAttribute(
+            "aria-current",
+            "page"
+          );
+
+
+        }
+
+
+        return;
+
+
+      }
+
+
+
+      /* OTHER PAGES */
+
+      const activeItem =
+        document.querySelector(
+          ".menu-item.active"
+        );
+
+
+      if (activeItem) {
+
+
+        activeItem.setAttribute(
+          "aria-current",
+          "page"
+        );
+
+
+      }
+
+
+    }
+
+
+
+    setCurrentPageSemantics();
+
+
   }
-
-
-});
+);
