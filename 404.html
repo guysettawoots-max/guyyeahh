@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+
+  <title>
+    404 — Nothing Here
+  </title>
+
+
+  <meta
+    name="robots"
+    content="noindex"
+  >
+
+
+  <link
+    rel="icon"
+    href="/guyeahh/favicon.svg"
+    type="image/svg+xml"
+  >
+
+
+  <style>
+
+
+    /* ========================================
+       BASIC
+    ======================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+
+    body {
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background: #ffffff;
+      color: #111111;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+    }
+
+
+
+    /* ========================================
+       SCANLINES
+    ======================================== */
+
+    body::after {
+      content: "";
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 100;
+
+      pointer-events: none;
+
+      opacity: 0.08;
+
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.25) 0,
+          rgba(0, 0, 0, 0.25) 1px,
+          transparent 1px,
+          transparent 5px
+        );
+
+      animation:
+        scan
+        7s
+        linear
+        infinite;
+    }
+
+
+    @keyframes scan {
+
+      from {
+        transform:
+          translateY(0);
+      }
+
+      to {
+        transform:
+          translateY(25px);
+      }
+
+    }
+
+
+
+    /* ========================================
+       PAGE
+    ======================================== */
+
+    .error-page {
+      min-height: 100svh;
+
+      display: flex;
+
+      flex-direction: column;
+    }
+
+
+
+    /* ========================================
+       TOP
+    ======================================== */
+
+    .error-top {
+      min-height: 80px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding:
+        0
+        30px;
+
+      border-bottom:
+        1px solid #111111;
+    }
+
+
+    .error-logo {
+      width: 50px;
+      height: 50px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border:
+        1px solid #111111;
+
+      border-radius: 50%;
+
+      color: #111111;
+
+      font-size: 11px;
+      font-weight: bold;
+
+      text-decoration: none;
+    }
+
+
+    .error-code-label {
+      font-size: 11px;
+
+      letter-spacing: 0.06em;
+    }
+
+
+
+    /* ========================================
+       MAIN
+    ======================================== */
+
+    .error-main {
+      flex: 1;
+
+      position: relative;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      padding:
+        50px
+        8vw;
+
+      overflow: hidden;
+    }
+
+
+    .error-label {
+      margin:
+        0
+        0
+        30px
+        0;
+
+      font-size: 11px;
+
+      letter-spacing: 0.08em;
+    }
+
+
+
+    /* ========================================
+       404
+    ======================================== */
+
+    .error-number {
+      width: max-content;
+
+      position: relative;
+
+      margin:
+        0
+        0
+        35px
+        -0.07em;
+
+      font-size:
+        clamp(
+          170px,
+          34vw,
+          540px
+        );
+
+      font-weight: normal;
+
+      line-height: 0.65;
+
+      letter-spacing: -0.12em;
+    }
+
+
+    .error-number::before,
+    .error-number::after {
+      content:
+        attr(data-text);
+
+      position: absolute;
+
+      inset: 0;
+
+      pointer-events: none;
+    }
+
+
+    .error-number::before {
+      color: #00e5ff;
+
+      clip-path:
+        inset(
+          0
+          0
+          53%
+          0
+        );
+
+      animation:
+        error-glitch-a
+        0.23s
+        steps(2, end)
+        infinite;
+    }
+
+
+    .error-number::after {
+      color: #ff2bd6;
+
+      clip-path:
+        inset(
+          53%
+          0
+          0
+          0
+        );
+
+      animation:
+        error-glitch-b
+        0.18s
+        steps(2, end)
+        infinite;
+    }
+
+
+    @keyframes error-glitch-a {
+
+      0% {
+        transform:
+          translate(-7px, 0);
+      }
+
+      50% {
+        transform:
+          translate(7px, 2px);
+      }
+
+      100% {
+        transform:
+          translate(-2px, -2px);
+      }
+
+    }
+
+
+    @keyframes error-glitch-b {
+
+      0% {
+        transform:
+          translate(5px, 1px);
+      }
+
+      50% {
+        transform:
+          translate(-8px, -2px);
+      }
+
+      100% {
+        transform:
+          translate(4px, 1px);
+      }
+
+    }
+
+
+
+    /* ========================================
+       MESSAGE
+    ======================================== */
+
+    .error-message {
+      max-width: 760px;
+
+      margin:
+        0
+        0
+        40px
+        0;
+
+      font-size:
+        clamp(
+          30px,
+          4vw,
+          62px
+        );
+
+      line-height: 0.95;
+
+      letter-spacing: -0.04em;
+    }
+
+
+    .error-random {
+      min-height: 1.5em;
+
+      margin:
+        0
+        0
+        45px
+        0;
+
+      font-size: 13px;
+
+      font-family:
+        monospace;
+    }
+
+
+
+    /* ========================================
+       LINKS
+    ======================================== */
+
+    .error-links {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 10px;
+    }
+
+
+    .error-link {
+      min-height: 50px;
+
+      display: flex;
+
+      align-items: center;
+
+      padding:
+        0
+        20px;
+
+      border:
+        1px solid #111111;
+
+      color: #111111;
+
+      font-size: 12px;
+
+      text-decoration: none;
+
+      transition:
+        background 0.15s ease,
+        color 0.15s ease,
+        transform 0.15s ease;
+    }
+
+
+    .error-link:hover {
+      background: #111111;
+
+      color: #ffffff;
+
+      transform:
+        rotate(-1deg)
+        translateY(-2px);
+    }
+
+
+
+    /* ========================================
+       FLOATING ERROR
+    ======================================== */
+
+    .error-float {
+      position: absolute;
+
+      right: 5vw;
+      bottom: 8vh;
+
+      padding:
+        8px
+        12px;
+
+      border:
+        1px solid #111111;
+
+      background: #f5ff00;
+
+      font-size: 10px;
+
+      transform:
+        rotate(5deg);
+
+      animation:
+        float-error
+        1.1s
+        steps(2, end)
+        infinite;
+    }
+
+
+    @keyframes float-error {
+
+      0% {
+        transform:
+          translate(0, 0)
+          rotate(5deg);
+      }
+
+      50% {
+        transform:
+          translate(-4px, 3px)
+          rotate(2deg);
+      }
+
+      100% {
+        transform:
+          translate(3px, -2px)
+          rotate(6deg);
+      }
+
+    }
+
+
+
+    /* ========================================
+       MOBILE
+    ======================================== */
+
+    @media (max-width: 700px) {
+
+
+      .error-top {
+        min-height: 70px;
+
+        padding:
+          0
+          16px;
+      }
+
+
+      .error-logo {
+        width: 44px;
+        height: 44px;
+      }
+
+
+      .error-main {
+        padding:
+          40px
+          20px;
+      }
+
+
+      .error-number {
+        font-size:
+          clamp(
+            150px,
+            55vw,
+            260px
+          );
+      }
+
+
+      .error-message {
+        font-size:
+          clamp(
+            32px,
+            11vw,
+            48px
+          );
+      }
+
+
+      .error-links {
+        flex-direction: column;
+      }
+
+
+      .error-link {
+        width: 100%;
+
+        justify-content: space-between;
+      }
+
+
+      .error-float {
+        display: none;
+      }
+
+
+    }
+
+
+
+    /* ========================================
+       REDUCED MOTION
+    ======================================== */
+
+    @media (
+      prefers-reduced-motion: reduce
+    ) {
+
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+      }
+
+
+    }
+
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <main class="error-page">
+
+
+    <!-- =========================
+         TOP
+    ========================== -->
+
+    <header class="error-top">
+
+
+      <a
+        class="error-logo"
+        href="/guyeahh/"
+      >
+        GUY
+      </a>
+
+
+      <span class="error-code-label">
+        ERROR / 404
+      </span>
+
+
+    </header>
+
+
+
+    <!-- =========================
+         ERROR
+    ========================== -->
+
+    <section class="error-main">
+
+
+      <p class="error-label">
+        YOU WENT TOO FAR
+      </p>
+
+
+
+      <h1
+        class="error-number"
+        data-text="404"
+      >
+        404
+      </h1>
+
+
+
+      <p class="error-message">
+        YOU FOUND<br>
+        NOTHING.
+      </p>
+
+
+
+      <p
+        class="error-random"
+        data-error-message
+      >
+        looking for something that isn't here...
+      </p>
+
+
+
+      <div class="error-links">
+
+
+        <a
+          class="error-link"
+          href="/guyeahh/"
+        >
+          GO HOME
+          <span>→</span>
+        </a>
+
+
+        <a
+          class="error-link"
+          href="/guyeahh/unknown.html"
+        >
+          ENTER ???
+          <span>→</span>
+        </a>
+
+
+      </div>
+
+
+
+      <div class="error-float">
+        PAGE_NOT_FOUND.exe
+      </div>
+
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =========================
+       TINY 404 SCRIPT
+  ========================== -->
+
+  <script>
+
+
+    const errorMessages = [
+
+      "looking for something that isn't here...",
+
+      "this page probably never existed.",
+
+      "good url not found.",
+
+      "maybe it moved.",
+
+      "maybe you broke it.",
+
+      "maybe i broke it.",
+
+      "nothing to see here.",
+
+      "wrong turn.",
+
+      "???"
+
+    ];
+
+
+    const errorMessage =
+      document.querySelector(
+        "[data-error-message]"
+      );
+
+
+    let messageIndex = 0;
+
+
+    window.setInterval(
+      function () {
+
+
+        messageIndex++;
+
+
+        if (
+          messageIndex >=
+          errorMessages.length
+        ) {
+
+          messageIndex = 0;
+
+        }
+
+
+        errorMessage.textContent =
+          errorMessages[
+            messageIndex
+          ];
+
+
+      },
+      1300
+    );
+
+
+  </script>
+
+
+</body>
+
+</html>
