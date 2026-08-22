@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Guy — Personal Website</title>
+
+
+  <!-- MAIN WEBSITE CSS -->
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+
+  <!-- HOME ONLY CSS -->
+
+  <link
+    rel="stylesheet"
+    href="home.css"
+  >
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+
+  <header class="site-header">
+
+    <nav class="navigation">
+
+
+      <!-- LOGO / HOME -->
+
+      <a
+        class="logo"
+        href="index.html"
+      >
+        GUY
+      </a>
+
+
+
+      <!-- MENU -->
+
+      <div class="menu">
+
+
+        <!-- ME -->
+
+        <a
+          class="menu-item"
+          href="me.html"
+        >
+          ME
+        </a>
+
+
+
+        <!-- WORK -->
+
+        <div
+          class="work-menu"
+          data-work-menu
+        >
+
+          <button
+            class="menu-item work-toggle"
+            type="button"
+            data-work-toggle
+            aria-expanded="false"
+          >
+
+            WORK
+
+            <span class="work-arrow">
+              ↓
+            </span>
+
+          </button>
+
+
+          <div class="work-dropdown">
+
+            <a
+              href="work.html?filter=all"
+              data-dropdown-filter="all"
+            >
+              ALL
+            </a>
+
+            <a
+              href="work.html?filter=kv"
+              data-dropdown-filter="kv"
+            >
+              KV
+            </a>
+
+            <a
+              href="work.html?filter=illustration"
+              data-dropdown-filter="illustration"
+            >
+              ILLUSTRATION
+            </a>
+
+            <a
+              href="work.html?filter=motion"
+              data-dropdown-filter="motion"
+            >
+              MOTION
+            </a>
+
+            <a
+              href="work.html?filter=3d"
+              data-dropdown-filter="3d"
+            >
+              3D
+            </a>
+
+            <a
+              href="work.html?filter=fine-art"
+              data-dropdown-filter="fine-art"
+            >
+              FINE ART
+            </a>
+
+          </div>
+
+        </div>
+
+
+
+        <!--
+          JAVASCRIPT WILL
+          TURN PLAY INTO ???
+        -->
+
+        <a
+          class="menu-item"
+          href="#"
+        >
+          PLAY
+        </a>
+
+
+
+        <!--
+          JAVASCRIPT WILL
+          CONNECT CONTACT
+        -->
+
+        <a
+          class="menu-item"
+          href="#"
+        >
+          CONTACT
+        </a>
+
+
+      </div>
+
+
+    </nav>
+
+  </header>
+
+
+
+  <!-- =========================
+       HOME
+  ========================== -->
+
+  <main class="home-stage">
+
+
+
+    <!-- =========================
+         LEFT
+    ========================== -->
+
+    <aside class="home-sidebar">
+
+
+      <p class="home-sidebar-label">
+        HOME
+      </p>
+
+
+      <p class="home-sidebar-note">
+        PERSONAL WEBSITE<br>
+        SELECTED WORK<br>
+        + OTHER THINGS
+      </p>
+
+
+    </aside>
+
+
+
+    <!-- =========================
+         RIGHT
+    ========================== -->
+
+    <section class="home-main">
+
+
+
+      <!-- =====================
+           HERO
+      ====================== -->
+
+      <div class="home-hero">
+
+
+        <p class="home-eyebrow">
+          HELLO / THIS IS MY WEBSITE
+        </p>
+
+
+
+        <h1 class="home-display">
+          i'm guy.
+        </h1>
+
+
+
+        <p class="home-statement">
+          I make visual things,
+          collect references,
+          and occasionally put
+          unfinished ideas
+          on the internet.
+        </p>
+
+
+
+        <!-- =====================
+             CURRENTLY
+        ====================== -->
+
+        <div class="home-current">
+
+
+          <span class="home-current-label">
+            CURRENTLY
+          </span>
+
+
+
+          <div class="home-current-value">
+
+            <span>
+              making things.
+            </span>
+
+            <span>
+              looking at things.
+            </span>
+
+            <span>
+              breaking things.
+            </span>
+
+            <span>
+              fixing them again.
+            </span>
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- =====================
+           QUICK LINKS
+      ====================== -->
+
+      <div class="home-links">
+
+
+        <a
+          class="home-link"
+          href="work.html"
+        >
+
+          <span>
+            SELECTED WORK
+          </span>
+
+          <span class="home-link-arrow">
+            →
+          </span>
+
+        </a>
+
+
+
+        <a
+          class="home-link"
+          href="me.html"
+        >
+
+          <span>
+            ABOUT ME
+          </span>
+
+          <span class="home-link-arrow">
+            →
+          </span>
+
+        </a>
+
+
+
+        <a
+          class="home-link"
+          href="unknown.html"
+        >
+
+          <span>
+            ENTER ???
+          </span>
+
+          <span class="home-link-arrow">
+            →
+          </span>
+
+        </a>
+
+
+      </div>
+
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script src="script.js"></script>
+
+
+</body>
+
+</html>

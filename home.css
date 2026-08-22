@@ -1,0 +1,663 @@
+/* ========================================
+   HOME PAGE
+======================================== */
+
+.home-stage {
+  width: 100%;
+
+  min-height:
+    calc(
+      100vh - 90px
+    );
+
+  display: grid;
+
+  grid-template-columns:
+    25% 75%;
+}
+
+
+
+/* ========================================
+   HOME SIDEBAR
+======================================== */
+
+.home-sidebar {
+  min-height:
+    calc(
+      100vh - 90px
+    );
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  padding: 40px;
+
+  border-right:
+    1px solid #111111;
+}
+
+
+.home-sidebar-label {
+  margin: 0;
+
+  font-size: 14px;
+}
+
+
+.home-sidebar-note {
+  margin: 0;
+
+  max-width: 170px;
+
+  font-size: 10px;
+
+  line-height: 1.5;
+
+  letter-spacing: 0.05em;
+}
+
+
+
+/* ========================================
+   HOME MAIN
+======================================== */
+
+.home-main {
+  min-width: 0;
+
+  min-height:
+    calc(
+      100vh - 90px
+    );
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+
+/* ========================================
+   HOME HERO
+======================================== */
+
+.home-hero {
+  flex: 1;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding:
+    60px
+    60px
+    80px;
+}
+
+
+
+/* ========================================
+   EYEBROW
+======================================== */
+
+.home-eyebrow {
+  margin:
+    0
+    0
+    55px
+    0;
+
+  font-size: 10px;
+
+  letter-spacing: 0.08em;
+
+  animation:
+    home-enter
+    0.6s
+    ease
+    both;
+}
+
+
+
+/* ========================================
+   BIG TITLE
+======================================== */
+
+.home-display {
+  margin:
+    0
+    0
+    65px
+    -8px;
+
+  font-size:
+    clamp(
+      100px,
+      14vw,
+      230px
+    );
+
+  font-weight: normal;
+
+  line-height: 0.72;
+
+  letter-spacing: -0.075em;
+
+  animation:
+    home-enter
+    0.7s
+    0.08s
+    ease
+    both;
+}
+
+
+
+/* ========================================
+   STATEMENT
+======================================== */
+
+.home-statement {
+  max-width: 850px;
+
+  margin:
+    0
+    0
+    70px
+    0;
+
+  font-size:
+    clamp(
+      28px,
+      3.3vw,
+      52px
+    );
+
+  line-height: 1.05;
+
+  letter-spacing: -0.035em;
+
+  animation:
+    home-enter
+    0.7s
+    0.16s
+    ease
+    both;
+}
+
+
+
+/* ========================================
+   CURRENTLY
+======================================== */
+
+.home-current {
+  width: 100%;
+
+  max-width: 780px;
+
+  display: grid;
+
+  grid-template-columns:
+    140px 1fr;
+
+  align-items: center;
+
+  padding:
+    15px
+    0;
+
+  border-top:
+    1px solid #111111;
+
+  border-bottom:
+    1px solid #111111;
+
+  animation:
+    home-enter
+    0.7s
+    0.24s
+    ease
+    both;
+}
+
+
+.home-current-label {
+  font-size: 10px;
+
+  letter-spacing: 0.08em;
+}
+
+
+
+/* ========================================
+   CURRENTLY WORD SWITCHER
+======================================== */
+
+.home-current-value {
+  height: 1.2em;
+
+  position: relative;
+
+  overflow: hidden;
+
+  font-size: 17px;
+}
+
+
+.home-current-value span {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  opacity: 0;
+
+  transform:
+    translateY(100%);
+
+  animation:
+    home-word-cycle
+    8s
+    infinite;
+}
+
+
+.home-current-value span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+
+.home-current-value span:nth-child(2) {
+  animation-delay: 2s;
+}
+
+
+.home-current-value span:nth-child(3) {
+  animation-delay: 4s;
+}
+
+
+.home-current-value span:nth-child(4) {
+  animation-delay: 6s;
+}
+
+
+
+@keyframes home-word-cycle {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      translateY(100%);
+  }
+
+
+  5% {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+
+  20% {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+
+  25% {
+    opacity: 0;
+
+    transform:
+      translateY(-100%);
+  }
+
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translateY(-100%);
+  }
+
+}
+
+
+
+/* ========================================
+   HOME LINKS
+======================================== */
+
+.home-links {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  border-top:
+    1px solid #111111;
+}
+
+
+.home-link {
+  min-height: 90px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding:
+    22px
+    25px;
+
+  border-right:
+    1px solid #111111;
+
+  color: #111111;
+
+  font-size: 12px;
+
+  letter-spacing: 0.03em;
+
+  text-decoration: none;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    padding 0.18s ease;
+}
+
+
+.home-link:last-child {
+  border-right: none;
+}
+
+
+.home-link:hover {
+  padding-left: 32px;
+
+  background: #111111;
+
+  color: #ffffff;
+}
+
+
+.home-link-arrow {
+  font-size: 17px;
+}
+
+
+
+/* ========================================
+   PAGE ENTRY
+======================================== */
+
+@keyframes home-enter {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(18px);
+  }
+
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+}
+
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (
+  min-width: 761px
+)
+and (
+  max-width: 1050px
+) {
+
+  .home-display {
+    font-size:
+      clamp(
+        90px,
+        15vw,
+        160px
+      );
+  }
+
+
+  .home-statement {
+    font-size:
+      clamp(
+        28px,
+        4vw,
+        42px
+      );
+  }
+
+}
+
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 760px) {
+
+
+  .home-stage {
+    min-height:
+      calc(
+        100svh - 72px
+      );
+
+    display: block;
+  }
+
+
+
+  /* SIDEBAR BECOMES LABEL */
+
+  .home-sidebar {
+    min-height: auto;
+
+    display: block;
+
+    padding: 20px;
+
+    border-right: none;
+
+    border-bottom:
+      1px solid #111111;
+  }
+
+
+  .home-sidebar-note {
+    display: none;
+  }
+
+
+
+  /* MAIN */
+
+  .home-main {
+    min-height:
+      calc(
+        100svh - 125px
+      );
+  }
+
+
+
+  /* HERO */
+
+  .home-hero {
+    min-height:
+      calc(
+        100svh - 200px
+      );
+
+    justify-content: center;
+
+    padding:
+      50px
+      20px
+      65px;
+  }
+
+
+
+  /* EYEBROW */
+
+  .home-eyebrow {
+    margin-bottom: 42px;
+  }
+
+
+
+  /* TITLE */
+
+  .home-display {
+    margin:
+      0
+      0
+      50px
+      -4px;
+
+    font-size:
+      clamp(
+        85px,
+        29vw,
+        135px
+      );
+
+    line-height: 0.78;
+  }
+
+
+
+  /* STATEMENT */
+
+  .home-statement {
+    margin-bottom: 55px;
+
+    font-size:
+      clamp(
+        28px,
+        8.5vw,
+        38px
+      );
+  }
+
+
+
+  /* CURRENTLY */
+
+  .home-current {
+    grid-template-columns:
+      105px 1fr;
+
+    padding:
+      13px
+      0;
+  }
+
+
+  .home-current-value {
+    font-size: 15px;
+  }
+
+
+
+  /* LINKS */
+
+  .home-links {
+    grid-template-columns: 1fr;
+  }
+
+
+  .home-link {
+    min-height: 65px;
+
+    padding:
+      18px
+      20px;
+
+    border-right: none;
+
+    border-bottom:
+      1px solid #111111;
+  }
+
+
+  .home-link:last-child {
+    border-bottom: none;
+  }
+
+
+  .home-link:hover {
+    padding-left: 20px;
+  }
+
+
+}
+
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (
+  prefers-reduced-motion: reduce
+) {
+
+  .home-current-value span {
+    animation: none;
+
+    opacity: 0;
+
+    transform: none;
+  }
+
+
+  .home-current-value span:first-child {
+    opacity: 1;
+  }
+
+
+  .home-eyebrow,
+  .home-display,
+  .home-statement,
+  .home-current {
+    animation: none;
+  }
+
+}

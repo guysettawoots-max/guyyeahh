@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Work — Guy</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+
+  <header class="site-header">
+
+    <nav class="navigation">
+
+
+      <!-- LOGO -->
+
+      <a
+        class="logo"
+        href="index.html"
+      >
+        GUY
+      </a>
+
+
+
+      <!-- MENU -->
+
+      <div class="menu">
+
+
+        <!-- ME -->
+
+        <a
+          class="menu-item"
+          href="me.html"
+        >
+          ME
+        </a>
+
+
+
+        <!-- WORK -->
+
+        <div
+          class="work-menu"
+          data-work-menu
+        >
+
+          <button
+            class="menu-item work-toggle active"
+            type="button"
+            data-work-toggle
+            aria-expanded="false"
+          >
+            WORK
+
+            <span class="work-arrow">
+              ↓
+            </span>
+
+          </button>
+
+
+          <div class="work-dropdown">
+
+            <a
+              href="work.html?filter=all"
+              data-dropdown-filter="all"
+            >
+              ALL
+            </a>
+
+            <a
+              href="work.html?filter=kv"
+              data-dropdown-filter="kv"
+            >
+              KV
+            </a>
+
+            <a
+              href="work.html?filter=illustration"
+              data-dropdown-filter="illustration"
+            >
+              ILLUSTRATION
+            </a>
+
+            <a
+              href="work.html?filter=motion"
+              data-dropdown-filter="motion"
+            >
+              MOTION
+            </a>
+
+            <a
+              href="work.html?filter=3d"
+              data-dropdown-filter="3d"
+            >
+              3D
+            </a>
+
+            <a
+              href="work.html?filter=fine-art"
+              data-dropdown-filter="fine-art"
+            >
+              FINE ART
+            </a>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- PLAY -->
+
+        <a
+          class="menu-item"
+          href="#"
+        >
+          PLAY
+        </a>
+
+
+
+        <!-- CONTACT -->
+
+        <a
+          class="menu-item"
+          href="#"
+        >
+          CONTACT
+        </a>
+
+
+      </div>
+
+
+    </nav>
+
+  </header>
+
+
+
+  <!-- =========================
+       WORK PAGE
+  ========================== -->
+
+  <main class="work-page">
+
+
+
+    <!-- =========================
+         WORK TOP
+    ========================== -->
+
+    <section class="work-top">
+
+
+      <!-- LEFT -->
+
+      <div class="work-title">
+
+        <p>
+          WORK
+        </p>
+
+      </div>
+
+
+
+      <!-- FILTERS -->
+
+      <div class="work-categories">
+
+
+        <button
+          class="work-filter-button is-active"
+          type="button"
+          data-filter="all"
+          aria-pressed="true"
+        >
+          ALL
+        </button>
+
+
+        <button
+          class="work-filter-button"
+          type="button"
+          data-filter="kv"
+          aria-pressed="false"
+        >
+          KV
+        </button>
+
+
+        <button
+          class="work-filter-button"
+          type="button"
+          data-filter="illustration"
+          aria-pressed="false"
+        >
+          ILLUSTRATION
+        </button>
+
+
+        <button
+          class="work-filter-button"
+          type="button"
+          data-filter="motion"
+          aria-pressed="false"
+        >
+          MOTION
+        </button>
+
+
+        <button
+          class="work-filter-button"
+          type="button"
+          data-filter="3d"
+          aria-pressed="false"
+        >
+          3D
+        </button>
+
+
+        <button
+          class="work-filter-button"
+          type="button"
+          data-filter="fine-art"
+          aria-pressed="false"
+        >
+          FINE ART
+        </button>
+
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         PROJECT GRID
+    ========================== -->
+
+    <section class="work-grid">
+
+
+
+      <!-- =====================
+           PROJECT 01
+
+           KV
+           ILLUSTRATION
+      ====================== -->
+
+      <a
+        class="project-link"
+        href="project-01.html"
+
+        data-project-card
+        data-categories="kv illustration"
+      >
+
+        <article class="project-card">
+
+
+          <div class="project-image-wrapper">
+
+            <img
+              class="project-image"
+              src="images/project-01/thumbnail.jpg"
+              alt="House of Count Party"
+            >
+
+          </div>
+
+
+          <div class="project-info">
+
+            <h2>
+              House of Count Party
+            </h2>
+
+            <p>
+              KV / ILLUSTRATION / 2026
+            </p>
+
+          </div>
+
+
+        </article>
+
+      </a>
+
+
+
+      <!-- =====================
+           PROJECT 02
+
+           3D
+      ====================== -->
+
+      <a
+        class="project-link"
+        href="project-02.html"
+
+        data-project-card
+        data-categories="3d"
+      >
+
+        <article class="project-card">
+
+
+          <div class="project-image-wrapper">
+
+            <img
+              class="project-image"
+              src="images/project-02/thumbnail.jpg"
+              alt="Project 02"
+            >
+
+          </div>
+
+
+          <div class="project-info">
+
+            <h2>
+              Project 02
+            </h2>
+
+            <p>
+              3D / 2026
+            </p>
+
+          </div>
+
+
+        </article>
+
+      </a>
+
+
+
+      <!-- =====================
+           EMPTY MESSAGE
+      ====================== -->
+
+      <p
+        class="work-empty"
+        data-work-empty
+        hidden
+      >
+        NO PROJECTS HERE YET.
+      </p>
+
+
+    </section>
+
+
+  </main>
+
+
+
+  <script src="script.js"></script>
+
+
+</body>
+
+</html>
