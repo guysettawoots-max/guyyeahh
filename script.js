@@ -1291,6 +1291,51 @@ document.addEventListener(
 
 
       /* ======================================
+         KEEP GRID DIVIDERS CORRECT
+         AFTER FILTERING
+      ====================================== */
+
+      const visibleCards =
+        Array.from(
+          projectCards
+        ).filter(
+          function (card) {
+            return !card.hidden;
+          }
+        );
+
+
+      projectCards.forEach(
+        function (card) {
+
+          card.classList.remove(
+            "is-grid-left"
+          );
+
+        }
+      );
+
+
+      visibleCards.forEach(
+        function (card, index) {
+
+          if (
+            index % 2 ===
+            0
+          ) {
+
+            card.classList.add(
+              "is-grid-left"
+            );
+
+          }
+
+        }
+      );
+
+
+
+      /* ======================================
          FILTER BUTTON STATE
       ====================================== */
 

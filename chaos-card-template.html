@@ -2,86 +2,87 @@
 <html lang="en">
 
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chaos Card Template — Guy</title>
 
   <!--
-    THIS IS A PRIVATE HELPER FILE.
-    IT IS NOT A REAL PAGE OF THE WEBSITE.
+    PRIVATE HELPER FILE ONLY.
+    THIS FILE IS NOT A REAL PAGE OF THE WEBSITE.
   -->
-
-  <meta
-    name="robots"
-    content="noindex, nofollow"
-  >
-
+  <meta name="robots" content="noindex, nofollow">
 </head>
 
 <body>
 
+  <!-- ============================================================
+       ??? / CHAOS CARD LIBRARY — EASY VERSION
 
-  <!-- ==================================================
-       CHAOS CARD LIBRARY
+       NORMAL WORKFLOW
 
-       HOW TO USE
+       1. OPEN chaos-card-template.html
+       2. FIND THE CARD TYPE YOU WANT
+       3. COPY ONLY BETWEEN:
 
-       1. OPEN unknown.html
-       2. FIND: ADD NEW STUFF HERE
-       3. CHOOSE ONE CARD BELOW
-       4. COPY ONLY <article> ... </article>
-       5. PASTE IT INSIDE .chaos-space
-       6. CHANGE THE TEXT / FILE PATH
-       7. SAVE
+            COPY START
+            ...
+            COPY END
 
-       IMPORTANT:
-       KEEP data-chaos-card ON EVERY CARD.
+       4. OPEN unknown.html
+       5. FIND: ADD NEW STUFF HERE — START
+       6. PASTE THE CARD BETWEEN START AND END
+       7. CHANGE ONLY THE ITEMS MARKED: EDIT THIS
+       8. SAVE + REFRESH
 
-       SIZE OPTIONS:
+       IMPORTANT — DO NOT REMOVE:
+       data-chaos-card
+       data-chaos-type
+       data-chaos-audio-*
+       data-chaos-no-drag
+       data-chaos-window-*
+
+       SIZE OPTIONS
        chaos-card--small
        chaos-card--medium
        chaos-card--large
 
-       COLOR OPTIONS FOR TEXT CARDS:
+       TEXT CARD COLOR OPTIONS
        chaos-card--black
        chaos-card--acid
        chaos-card--pink
-  =================================================== -->
+
+       FILE FOLDERS
+       SKETCH  → images/chaos/sketches/
+       PHOTO   → images/chaos/photos/
+       MUSIC   → audio/chaos/
+  ============================================================ -->
 
 
-  <!-- ==================================================
-       CARD 01 — SKETCH / IMAGE
+  <!-- ============================================================
+       01 — NEW SKETCH
 
        BEFORE USING:
-       CREATE THIS FOLDER IF IT DOES NOT EXIST:
+       put your image here:
        images/chaos/sketches/
 
-       EXAMPLE FILE:
-       images/chaos/sketches/sketch-001.jpg
-
-       CLICK / TAP WITHOUT DRAGGING:
-       OPENS THE IMAGE LARGE AUTOMATICALLY.
-  =================================================== -->
+       EDIT ONLY:
+       1. src="..."
+       2. alt="..."
+       3. caption text
+  ============================================================ -->
 
   <template id="chaos-template-sketch">
 
+    <!-- COPY START — SKETCH -->
     <article
-      class="
-        chaos-card
-        chaos-card--medium
-      "
+      class="chaos-card chaos-card--medium"
       data-chaos-card
       data-chaos-type="sketch"
     >
 
+      <!-- EDIT THIS: src + alt below -->
       <img
-        src="images/chaos/sketches/sketch-001.jpg"
+        src="images/chaos/sketches/sketch-002.jpg"
         alt="Sketch by Guy"
         loading="lazy"
         decoding="async"
@@ -89,41 +90,40 @@
       >
 
       <div class="chaos-card-caption">
-        SKETCH_001
+        SKETCH_002.JPG <!-- EDIT THIS -->
       </div>
 
     </article>
+    <!-- COPY END — SKETCH -->
 
   </template>
 
 
-  <!-- ==================================================
-       CARD 02 — PHOTO
+  <!-- ============================================================
+       02 — NEW PHOTO
 
        BEFORE USING:
-       CREATE THIS FOLDER IF IT DOES NOT EXIST:
+       put your image here:
        images/chaos/photos/
 
-       EXAMPLE FILE:
-       images/chaos/photos/photo-001.jpg
-
-       CLICK / TAP WITHOUT DRAGGING:
-       OPENS THE IMAGE LARGE AUTOMATICALLY.
-  =================================================== -->
+       EDIT ONLY:
+       1. src="..."
+       2. alt="..."
+       3. caption text
+  ============================================================ -->
 
   <template id="chaos-template-photo">
 
+    <!-- COPY START — PHOTO -->
     <article
-      class="
-        chaos-card
-        chaos-card--large
-      "
+      class="chaos-card chaos-card--medium"
       data-chaos-card
       data-chaos-type="photo"
     >
 
+      <!-- EDIT THIS: src + alt below -->
       <img
-        src="images/chaos/photos/photo-001.jpg"
+        src="images/chaos/photos/photo-002.jpg"
         alt="Photo by Guy"
         loading="lazy"
         decoding="async"
@@ -131,93 +131,86 @@
       >
 
       <div class="chaos-card-caption">
-        IMG_0001.JPG / SOMEWHERE
+        IMG_002.JPG <!-- EDIT THIS -->
       </div>
 
     </article>
+    <!-- COPY END — PHOTO -->
 
   </template>
 
 
-  <!-- ==================================================
-       CARD 03 — NOTE
+  <!-- ============================================================
+       03 — NEW NOTE
 
        NO EXTRA FILE NEEDED.
-       JUST CHANGE THE LABEL + TEXT.
-  =================================================== -->
+
+       EDIT ONLY:
+       1. label
+       2. note text
+
+       OPTIONAL:
+       change chaos-card--acid to:
+       chaos-card--black
+       chaos-card--pink
+       or remove the color class for white.
+  ============================================================ -->
 
   <template id="chaos-template-note">
 
+    <!-- COPY START — NOTE -->
     <article
-      class="
-        chaos-card
-        chaos-card--text
-        chaos-card--small
-        chaos-card--acid
-      "
+      class="chaos-card chaos-card--text chaos-card--small chaos-card--acid"
       data-chaos-card
       data-chaos-type="note"
     >
 
       <p class="chaos-small-label">
-        NOTE / TODAY
+        NOTE / TODAY <!-- EDIT THIS -->
       </p>
 
       <p class="chaos-note">
-        write something
-        unnecessary here.
+        put your thought<br>
+        here. <!-- EDIT THIS -->
       </p>
 
     </article>
+    <!-- COPY END — NOTE -->
 
   </template>
 
 
-  <!-- ==================================================
-       CARD 04 — MUSIC / AUDIO
+  <!-- ============================================================
+       04 — NEW MUSIC
 
        BEFORE USING:
-       CREATE THIS FOLDER IF IT DOES NOT EXIST:
+       put your MP3 here:
        audio/chaos/
 
-       PUT YOUR MP3 HERE, FOR EXAMPLE:
-       audio/chaos/demo-001.mp3
+       EDIT ONLY:
+       1. top label
+       2. audio title
+       3. meta text
+       4. src="audio/chaos/YOUR-FILE.mp3"
 
-       THEN CHANGE:
-       - AUDIO TITLE
-       - META TEXT
-       - src="audio/chaos/demo-001.mp3"
-
-       IMPORTANT:
-       KEEP data-chaos-no-drag ON THE CONTROLS.
-       THIS ALLOWS THE PLAY BUTTON TO WORK
-       WITHOUT DRAGGING THE CARD.
-  =================================================== -->
+       DO NOT REMOVE data-chaos-no-drag.
+  ============================================================ -->
 
   <template id="chaos-template-audio">
 
+    <!-- COPY START — MUSIC -->
     <article
-      class="
-        chaos-card
-        chaos-card--text
-        chaos-card--medium
-        chaos-card--black
-        chaos-audio-card
-      "
+      class="chaos-card chaos-card--text chaos-card--medium chaos-card--black chaos-audio-card"
       data-chaos-card
       data-chaos-type="audio"
       data-chaos-audio-card
     >
 
       <p class="chaos-small-label">
-        MY AUDIO / DEMO
+        AUDIO FILE / UNFINISHED <!-- EDIT THIS -->
       </p>
 
-      <div
-        class="chaos-wave"
-        aria-hidden="true"
-      >
-
+      <div class="chaos-wave" aria-hidden="true">
         <span></span>
         <span></span>
         <span></span>
@@ -228,21 +221,17 @@
         <span></span>
         <span></span>
         <span></span>
-
       </div>
 
       <p class="chaos-audio-title">
-        UNTITLED_001
+        demo-002.mp3 <!-- EDIT THIS -->
       </p>
 
       <p class="chaos-audio-meta">
-        demo / aug 2026
+        unfinished / whenever <!-- EDIT THIS -->
       </p>
 
-      <div
-        class="chaos-audio-controls"
-        data-chaos-no-drag
-      >
+      <div class="chaos-audio-controls" data-chaos-no-drag>
 
         <button
           class="chaos-audio-button"
@@ -252,10 +241,7 @@
           PLAY
         </button>
 
-        <span
-          class="chaos-audio-time"
-          data-chaos-audio-time
-        >
+        <span class="chaos-audio-time" data-chaos-audio-time>
           00:00 / --:--
         </span>
 
@@ -263,64 +249,40 @@
 
       <audio
         preload="metadata"
-        src="audio/chaos/demo-001.mp3"
+        src="audio/chaos/demo-002.mp3"
         data-chaos-audio
       ></audio>
 
     </article>
+    <!-- COPY END — MUSIC -->
 
   </template>
 
 
-  <!-- ==================================================
-       OPTIONAL COMBINATIONS
-
-       NOTE / BLACK:
-       chaos-card chaos-card--text chaos-card--small chaos-card--black
-
-       NOTE / PINK:
-       chaos-card chaos-card--text chaos-card--medium chaos-card--pink
-
-       BIG SKETCH:
-       chaos-card chaos-card--large
-
-       SMALL PHOTO:
-       chaos-card chaos-card--small
-  =================================================== -->
-
-
-
-  <!-- ==================================================
-       CARD 05 — DO NOT CLICK / MESSAGE CYCLE
+  <!-- ============================================================
+       05 — MESSAGE BUTTON / DO NOT CLICK
 
        NO EXTRA FILE NEEDED.
 
-       CHANGE:
-       - LABEL
-       - STARTING TEXT
-       - THE <li> MESSAGES
-
-       IMPORTANT:
-       KEEP data-chaos-no-drag AROUND THE BUTTON.
-  =================================================== -->
+       EDIT ONLY:
+       1. label
+       2. starting text
+       3. button text
+       4. each <li> message
+  ============================================================ -->
 
   <template id="chaos-template-message-cycle">
 
+    <!-- COPY START — MESSAGE BUTTON -->
     <article
-      class="
-        chaos-card
-        chaos-card--text
-        chaos-card--small
-        chaos-card--acid
-        chaos-action-card
-      "
+      class="chaos-card chaos-card--text chaos-card--small chaos-card--acid chaos-action-card"
       data-chaos-card
       data-chaos-type="interaction"
       data-chaos-message-card
     >
 
       <p class="chaos-small-label">
-        VERY IMPORTANT BUTTON
+        VERY IMPORTANT BUTTON <!-- EDIT THIS -->
       </p>
 
       <p
@@ -328,180 +290,160 @@
         data-chaos-message-output
         aria-live="polite"
       >
-        do not click.
+        do not click. <!-- EDIT THIS -->
       </p>
 
-      <div
-        class="chaos-action-controls"
-        data-chaos-no-drag
-      >
+      <div class="chaos-action-controls" data-chaos-no-drag>
         <button
           class="chaos-action-button"
           type="button"
           data-chaos-message-button
         >
-          DO NOT CLICK
+          DO NOT CLICK <!-- EDIT THIS -->
         </button>
       </div>
 
-      <ul
-        data-chaos-message-list
-        hidden
-      >
-        <li>why did you click it?</li>
-        <li>okay.</li>
-        <li>again?</li>
-        <li>this is becoming a problem.</li>
-        <li>nothing happens.</li>
-        <li>you have successfully wasted time.</li>
+      <ul data-chaos-message-list hidden>
+        <li>why did you click it?</li>       <!-- EDIT THIS -->
+        <li>okay.</li>                       <!-- EDIT THIS -->
+        <li>again?</li>                      <!-- EDIT THIS -->
+        <li>this is becoming a problem.</li><!-- EDIT THIS -->
+        <li>nothing happens.</li>            <!-- EDIT THIS -->
       </ul>
 
     </article>
+    <!-- COPY END — MESSAGE BUTTON -->
 
   </template>
 
 
-  <!-- ==================================================
-       CARD 06 — MAKE WEBSITE WORSE
+  <!-- ============================================================
+       06 — MAKE WEBSITE WORSE
 
        NO EXTRA FILE NEEDED.
-       THE BUTTON TRIGGERS A SHORT GLITCH ON THE ??? PAGE.
 
-       YOU CAN CHANGE THE LABEL / TEXT / BUTTON WORDING.
-       KEEP data-chaos-worse-button ON THE BUTTON.
-  =================================================== -->
+       EDIT ONLY:
+       label / text / button wording.
+
+       KEEP data-chaos-worse-button.
+  ============================================================ -->
 
   <template id="chaos-template-make-worse">
 
+    <!-- COPY START — MAKE WORSE -->
     <article
-      class="
-        chaos-card
-        chaos-card--text
-        chaos-card--medium
-        chaos-card--black
-        chaos-action-card
-      "
+      class="chaos-card chaos-card--text chaos-card--medium chaos-card--black chaos-action-card"
       data-chaos-card
       data-chaos-type="interaction"
     >
 
       <p class="chaos-small-label">
-        BAD IDEA GENERATOR
+        BAD IDEA GENERATOR <!-- EDIT THIS -->
       </p>
 
       <p class="chaos-big-note">
-        make the website
-        worse for a second.
+        make the website<br>
+        worse for a second. <!-- EDIT THIS -->
       </p>
 
-      <div
-        class="chaos-action-controls"
-        data-chaos-no-drag
-      >
+      <div class="chaos-action-controls" data-chaos-no-drag>
         <button
           class="chaos-action-button chaos-action-button--inverse"
           type="button"
           data-chaos-worse-button
         >
-          MAKE IT WORSE
+          MAKE IT WORSE <!-- EDIT THIS -->
         </button>
       </div>
 
     </article>
+    <!-- COPY END — MAKE WORSE -->
 
   </template>
 
 
+  <!-- ============================================================
+       07 — FAKE DESKTOP WINDOW
 
-  <!-- ==================================================
-       CARD 07 — FAKE DESKTOP WINDOW
+       NO EXTRA FILE NEEDED FOR TEXT.
 
-       NO EXTRA FILE NEEDED FOR A TEXT WINDOW.
+       EDIT ONLY:
+       1. card label
+       2. card text
+       3. button text
+       4. data-chaos-window-title="..."
+       5. content inside <template data-chaos-window-content>
 
-       COPY ONLY THIS <article> ... </article>
-       INTO unknown.html LIKE ANY OTHER CHAOS CARD.
-
-       CHANGE:
-       - LABEL / CARD TEXT
-       - BUTTON TEXT
-       - data-chaos-window-title="notes.txt"
-       - EVERYTHING INSIDE <template data-chaos-window-content>
-
-       YOU CAN PUT TEXT, LINKS, OR EVEN AN <img>
-       INSIDE THE TEMPLATE.
-
-       DESKTOP:
-       THE POPUP WINDOW CAN BE DRAGGED BY ITS TITLE BAR.
-
-       MOBILE:
-       THE WINDOW OPENS IN A READABLE FIXED POSITION.
-  =================================================== -->
+       YOU MAY PUT AN <img>, LINKS, OR TEXT INSIDE THE WINDOW.
+  ============================================================ -->
 
   <template id="chaos-template-fake-window-card">
 
+    <!-- COPY START — FAKE WINDOW -->
     <article
-      class="
-        chaos-card
-        chaos-card--text
-        chaos-card--medium
-        chaos-card--pink
-        chaos-action-card
-        chaos-window-card
-      "
+      class="chaos-card chaos-card--text chaos-card--medium chaos-card--pink chaos-action-card chaos-window-card"
       data-chaos-card
       data-chaos-type="interaction"
       data-chaos-window-card
     >
 
       <p class="chaos-small-label">
-        LOCAL FILE / MAYBE IMPORTANT
+        PERSONAL FILE / MAYBE IMPORTANT <!-- EDIT THIS -->
       </p>
 
       <p class="chaos-big-note">
-        there is a file
-        sitting somewhere
-        in my brain.
+        something is hiding<br>
+        in this file. <!-- EDIT THIS -->
       </p>
 
-      <div
-        class="chaos-action-controls"
-        data-chaos-no-drag
-      >
+      <div class="chaos-action-controls" data-chaos-no-drag>
         <button
           class="chaos-action-button"
           type="button"
           data-chaos-window-open
-          data-chaos-window-title="notes.txt"
+          data-chaos-window-title="random-note.txt"
         >
-          OPEN NOTES.TXT
+          OPEN RANDOM-NOTE.TXT <!-- EDIT THIS -->
         </button>
       </div>
 
       <template data-chaos-window-content>
 
         <p class="chaos-window-kicker">
-          UNFINISHED THOUGHTS
+          RANDOM NOTE <!-- EDIT THIS -->
         </p>
 
         <p class="chaos-window-big-text">
           put anything here.<br>
-          a note.<br>
-          a weird link.<br>
-          a tiny archive of nothing.
+          it does not need<br>
+          to make sense. <!-- EDIT THIS -->
         </p>
 
         <div class="chaos-window-filemeta">
-          <span>FILE: notes.txt</span>
-          <span>STATUS: unfinished</span>
+          <span>FILE: random-note.txt</span> <!-- EDIT THIS -->
+          <span>STATUS: unfinished</span>   <!-- EDIT THIS -->
         </div>
 
       </template>
 
     </article>
+    <!-- COPY END — FAKE WINDOW -->
 
   </template>
 
 
-</body>
+  <!-- ============================================================
+       QUICK REMINDER
 
+       ADDING A NEW ITEM DOES NOT REQUIRE NEW JAVASCRIPT.
+
+       SKETCH / PHOTO / NOTE / MUSIC:
+       copy → paste → edit marked text/path → save.
+
+       If the LIVE Safari page ever behaves older than Chrome,
+       first test in a Private Window. If it works there,
+       clear Safari website data/cache for the site.
+  ============================================================ -->
+
+</body>
 </html>

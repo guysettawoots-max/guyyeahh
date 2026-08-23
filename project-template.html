@@ -12,48 +12,55 @@
 
 
   <!-- ==================================================
-       NEW PROJECT TEMPLATE
+       MASTER PROJECT TEMPLATE
 
-       AFTER DUPLICATING THIS FILE:
+       DUPLICATE THIS FILE FIRST.
+       THEN RENAME THE COPY:
+       project-04.html, project-05.html, etc.
 
-       PROJECT-SLUG
-       example:
-       project-03
+       CHANGE THESE ITEMS:
 
-       PROJECT-FOLDER
-       example:
-       project-03
+       01. PROJECT-SLUG
+           example: project-04
 
-       PROJECT NAME
-       example:
-       Cloud Bread
+       02. PROJECT-FOLDER
+           example: project-04
 
-       PROJECT NUMBER
-       example:
-       PROJECT 03
+       03. PROJECT NAME
+           example: Cloud Bread
 
-       PROJECT CATEGORY
-       example:
-       KV / Illustration
+       04. PROJECT NUMBER
+           example: PROJECT 04
 
-       PROJECT YEAR
-       example:
-       2026
+       05. PROJECT CLIENT
+           example: Sansiri
+           If a client should not be shown, remove that
+           whole CLIENT <div> from the project meta.
 
-       PROJECT TYPE
-       example:
-       Client / Selected Work
+       06. PROJECT ROLE
+           example: Graphic Design / Illustration
 
-       PROJECT DESCRIPTION
-       example:
-       A visual identity project exploring softness,
-       bread and cloud-like forms.
+       07. PROJECT YEAR
+           example: 2026
+
+       08. PROJECT CATEGORY
+           example: KV / Illustration
+
+       09. PROJECT DESCRIPTION
+           Keep it short and factual.
+
+       10. HERO + GALLERY FILES / CAPTIONS / ALT TEXT
+
+       11. PREVIOUS / NEXT
+           Links are DISABLED by default below.
+           Enable only links that really exist.
 
        IMPORTANT:
-       DELETE THE "noindex" META TAG
-       WHEN THE PROJECT IS READY TO PUBLISH.
+       - DELETE THE "noindex" META TAG
+         WHEN THE PROJECT IS READY TO PUBLISH.
+       - KEEP script.js AND style.css LINKS AS THEY ARE.
+       - THIS GRAPHIC-DESIGN TEMPLATE HAS NO PROPOSAL BLOCK.
   =================================================== -->
-
 
 
   <!-- =========================
@@ -315,16 +322,16 @@
 
         <a
           class="menu-item"
-          href="#"
+          href="unknown.html"
         >
-          PLAY
+          ???
         </a>
 
 
 
         <a
           class="menu-item"
-          href="#"
+          href="contact.html"
         >
           CONTACT
         </a>
@@ -349,7 +356,8 @@
 
     <!-- =========================
          PROJECT HEADER
-         CHANGE 05
+         CHANGE PROJECT NUMBER / NAME /
+         CLIENT / ROLE / YEAR / CATEGORY
     ========================== -->
 
     <section class="project-header">
@@ -377,16 +385,32 @@
         <div class="project-meta">
 
 
-          <!-- CATEGORY -->
+          <!-- CLIENT -->
 
           <div>
 
             <p class="project-meta-label">
-              CATEGORY
+              CLIENT
             </p>
 
             <p>
-              PROJECT CATEGORY
+              PROJECT CLIENT
+            </p>
+
+          </div>
+
+
+
+          <!-- ROLE -->
+
+          <div>
+
+            <p class="project-meta-label">
+              ROLE
+            </p>
+
+            <p>
+              PROJECT ROLE
             </p>
 
           </div>
@@ -409,16 +433,16 @@
 
 
 
-          <!-- TYPE -->
+          <!-- CATEGORY -->
 
           <div>
 
             <p class="project-meta-label">
-              TYPE
+              CATEGORY
             </p>
 
             <p>
-              PROJECT TYPE
+              PROJECT CATEGORY
             </p>
 
           </div>
@@ -686,16 +710,29 @@
          CHANGE 08
     ========================== -->
 
+    <!--
+      SAFE BY DEFAULT:
+      PREVIOUS / NEXT ARE DISABLED UNTIL YOU
+      CHANGE THEM TO REAL LINKS.
+    -->
+
     <section class="project-navigation">
 
 
-      <a
-        href="PREVIOUS-PROJECT.html"
-        class="project-nav-link"
-      >
-        ← PREVIOUS
-      </a>
+      <!--
+        ENABLE THIS ONLY WHEN A PREVIOUS PROJECT EXISTS:
 
+        <a
+          href="PREVIOUS-PROJECT.html"
+          class="project-nav-link"
+        >
+          ← PREVIOUS
+        </a>
+      -->
+
+      <span class="project-nav-disabled">
+        ← PREVIOUS
+      </span>
 
 
       <a
@@ -706,13 +743,20 @@
       </a>
 
 
+      <!--
+        ENABLE THIS ONLY WHEN A NEXT PROJECT EXISTS:
 
-      <a
-        href="NEXT-PROJECT.html"
-        class="project-nav-link"
-      >
+        <a
+          href="NEXT-PROJECT.html"
+          class="project-nav-link"
+        >
+          NEXT →
+        </a>
+      -->
+
+      <span class="project-nav-disabled">
         NEXT →
-      </a>
+      </span>
 
 
     </section>
