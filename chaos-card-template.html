@@ -64,6 +64,9 @@
 
        EXAMPLE FILE:
        images/chaos/sketches/sketch-001.jpg
+
+       CLICK / TAP WITHOUT DRAGGING:
+       OPENS THE IMAGE LARGE AUTOMATICALLY.
   =================================================== -->
 
   <template id="chaos-template-sketch">
@@ -103,6 +106,9 @@
 
        EXAMPLE FILE:
        images/chaos/photos/photo-001.jpg
+
+       CLICK / TAP WITHOUT DRAGGING:
+       OPENS THE IMAGE LARGE AUTOMATICALLY.
   =================================================== -->
 
   <template id="chaos-template-photo">
@@ -281,6 +287,219 @@
        SMALL PHOTO:
        chaos-card chaos-card--small
   =================================================== -->
+
+
+
+  <!-- ==================================================
+       CARD 05 — DO NOT CLICK / MESSAGE CYCLE
+
+       NO EXTRA FILE NEEDED.
+
+       CHANGE:
+       - LABEL
+       - STARTING TEXT
+       - THE <li> MESSAGES
+
+       IMPORTANT:
+       KEEP data-chaos-no-drag AROUND THE BUTTON.
+  =================================================== -->
+
+  <template id="chaos-template-message-cycle">
+
+    <article
+      class="
+        chaos-card
+        chaos-card--text
+        chaos-card--small
+        chaos-card--acid
+        chaos-action-card
+      "
+      data-chaos-card
+      data-chaos-type="interaction"
+      data-chaos-message-card
+    >
+
+      <p class="chaos-small-label">
+        VERY IMPORTANT BUTTON
+      </p>
+
+      <p
+        class="chaos-action-output"
+        data-chaos-message-output
+        aria-live="polite"
+      >
+        do not click.
+      </p>
+
+      <div
+        class="chaos-action-controls"
+        data-chaos-no-drag
+      >
+        <button
+          class="chaos-action-button"
+          type="button"
+          data-chaos-message-button
+        >
+          DO NOT CLICK
+        </button>
+      </div>
+
+      <ul
+        data-chaos-message-list
+        hidden
+      >
+        <li>why did you click it?</li>
+        <li>okay.</li>
+        <li>again?</li>
+        <li>this is becoming a problem.</li>
+        <li>nothing happens.</li>
+        <li>you have successfully wasted time.</li>
+      </ul>
+
+    </article>
+
+  </template>
+
+
+  <!-- ==================================================
+       CARD 06 — MAKE WEBSITE WORSE
+
+       NO EXTRA FILE NEEDED.
+       THE BUTTON TRIGGERS A SHORT GLITCH ON THE ??? PAGE.
+
+       YOU CAN CHANGE THE LABEL / TEXT / BUTTON WORDING.
+       KEEP data-chaos-worse-button ON THE BUTTON.
+  =================================================== -->
+
+  <template id="chaos-template-make-worse">
+
+    <article
+      class="
+        chaos-card
+        chaos-card--text
+        chaos-card--medium
+        chaos-card--black
+        chaos-action-card
+      "
+      data-chaos-card
+      data-chaos-type="interaction"
+    >
+
+      <p class="chaos-small-label">
+        BAD IDEA GENERATOR
+      </p>
+
+      <p class="chaos-big-note">
+        make the website
+        worse for a second.
+      </p>
+
+      <div
+        class="chaos-action-controls"
+        data-chaos-no-drag
+      >
+        <button
+          class="chaos-action-button chaos-action-button--inverse"
+          type="button"
+          data-chaos-worse-button
+        >
+          MAKE IT WORSE
+        </button>
+      </div>
+
+    </article>
+
+  </template>
+
+
+
+  <!-- ==================================================
+       CARD 07 — FAKE DESKTOP WINDOW
+
+       NO EXTRA FILE NEEDED FOR A TEXT WINDOW.
+
+       COPY ONLY THIS <article> ... </article>
+       INTO unknown.html LIKE ANY OTHER CHAOS CARD.
+
+       CHANGE:
+       - LABEL / CARD TEXT
+       - BUTTON TEXT
+       - data-chaos-window-title="notes.txt"
+       - EVERYTHING INSIDE <template data-chaos-window-content>
+
+       YOU CAN PUT TEXT, LINKS, OR EVEN AN <img>
+       INSIDE THE TEMPLATE.
+
+       DESKTOP:
+       THE POPUP WINDOW CAN BE DRAGGED BY ITS TITLE BAR.
+
+       MOBILE:
+       THE WINDOW OPENS IN A READABLE FIXED POSITION.
+  =================================================== -->
+
+  <template id="chaos-template-fake-window-card">
+
+    <article
+      class="
+        chaos-card
+        chaos-card--text
+        chaos-card--medium
+        chaos-card--pink
+        chaos-action-card
+        chaos-window-card
+      "
+      data-chaos-card
+      data-chaos-type="interaction"
+      data-chaos-window-card
+    >
+
+      <p class="chaos-small-label">
+        LOCAL FILE / MAYBE IMPORTANT
+      </p>
+
+      <p class="chaos-big-note">
+        there is a file
+        sitting somewhere
+        in my brain.
+      </p>
+
+      <div
+        class="chaos-action-controls"
+        data-chaos-no-drag
+      >
+        <button
+          class="chaos-action-button"
+          type="button"
+          data-chaos-window-open
+          data-chaos-window-title="notes.txt"
+        >
+          OPEN NOTES.TXT
+        </button>
+      </div>
+
+      <template data-chaos-window-content>
+
+        <p class="chaos-window-kicker">
+          UNFINISHED THOUGHTS
+        </p>
+
+        <p class="chaos-window-big-text">
+          put anything here.<br>
+          a note.<br>
+          a weird link.<br>
+          a tiny archive of nothing.
+        </p>
+
+        <div class="chaos-window-filemeta">
+          <span>FILE: notes.txt</span>
+          <span>STATUS: unfinished</span>
+        </div>
+
+      </template>
+
+    </article>
+
+  </template>
 
 
 </body>

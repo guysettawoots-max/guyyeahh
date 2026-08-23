@@ -346,27 +346,30 @@
 
            KEEP data-chaos-card ON EVERY CARD.
            THE SCRIPT WILL SCATTER + DRAG IT AUTOMATICALLY.
+
+           IMAGE / SKETCH / PHOTO CARDS:
+           CLICK WITHOUT DRAGGING = OPEN LARGE VIEW.
       =================================================== -->
 
 
 
       <!-- =====================
            CARD 01
-           IMAGE
+           SKETCH / REAL FILE
       ====================== -->
 
       <article
         class="
           chaos-card
-          chaos-card--large
+          chaos-card--medium
         "
         data-chaos-card
-        data-chaos-type="image"
+        data-chaos-type="sketch"
       >
 
         <img
-          src="images/project-01/thumbnail.jpg"
-          alt="Random visual"
+          src="images/chaos/sketches/sketch-001.jpg"
+          alt="Sketch by Guy"
           loading="lazy"
           decoding="async"
           draggable="false"
@@ -374,7 +377,7 @@
 
         <div class="chaos-card-caption">
 
-          FOUND IMAGE_001
+          SKETCH_001.JPG
 
         </div>
 
@@ -384,21 +387,21 @@
 
       <!-- =====================
            CARD 02
-           IMAGE
+           PHOTO / REAL FILE
       ====================== -->
 
       <article
         class="
           chaos-card
-          chaos-card--medium
+          chaos-card--small
         "
         data-chaos-card
-        data-chaos-type="image"
+        data-chaos-type="photo"
       >
 
         <img
-          src="images/project-02/thumbnail.jpg"
-          alt="Random experiment"
+          src="images/chaos/photos/photo-001.jpg"
+          alt="Photo by Guy"
           loading="lazy"
           decoding="async"
           draggable="false"
@@ -406,7 +409,7 @@
 
         <div class="chaos-card-caption">
 
-          COLOR TEST / MAYBE
+          IMG_001.JPG
 
         </div>
 
@@ -431,21 +434,21 @@
       >
 
         <p class="chaos-small-label">
-          CURRENTLY OBSESSED WITH
+          CURRENTLY INTO
         </p>
 
         <ul class="chaos-list">
 
           <li>
-            heavy music
+            making music
+          </li>
+
+          <li>
+            looking at memes
           </li>
 
           <li>
             weird objects
-          </li>
-
-          <li>
-            bread
           </li>
 
           <li>
@@ -507,12 +510,12 @@
       >
 
         <p class="chaos-small-label">
-          NOTE TO SELF
+          NOTE / RIGHT NOW
         </p>
 
         <p class="chaos-note">
-          do not organize
-          this page.
+          still trying to figure out
+          what I actually like.
         </p>
 
       </article>
@@ -521,53 +524,6 @@
 
       <!-- =====================
            CARD 06
-           LISTENING
-      ====================== -->
-
-      <article
-        class="
-          chaos-card
-          chaos-card--text
-          chaos-card--medium
-        "
-        data-chaos-card
-        data-chaos-type="listening"
-      >
-
-        <p class="chaos-small-label">
-          LISTENING...
-        </p>
-
-
-        <div
-          class="chaos-wave"
-          aria-hidden="true"
-        >
-
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-
-        </div>
-
-
-        <p>
-          something unnecessarily heavy
-        </p>
-
-      </article>
-
-
-
-      <!-- =====================
-           CARD 07
            COLOR / TEST
       ====================== -->
 
@@ -605,7 +561,7 @@
 
 
       <!-- =====================
-           CARD 08
+           CARD 07
            RANDOM TEXT
       ====================== -->
 
@@ -634,8 +590,8 @@
 
 
       <!-- =====================
-           CARD 09
-           MY MUSIC / DEMO
+           CARD 08
+           MY MUSIC / REAL FILE
       ====================== -->
 
       <article
@@ -652,7 +608,7 @@
       >
 
         <p class="chaos-small-label">
-          MY AUDIO / DEMO
+          AUDIO FILE / UNFINISHED
         </p>
 
 
@@ -676,11 +632,11 @@
 
 
         <p class="chaos-audio-title">
-          DEMO_001
+          demo-001.mp3
         </p>
 
         <p class="chaos-audio-meta">
-          demo / aug 2026
+          unfinished / aug 2026
         </p>
 
 
@@ -717,10 +673,67 @@
       </article>
 
 
+      <!-- =====================
+           CARD 09
+           DO NOT CLICK
+      ====================== -->
+
+      <article
+        class="
+          chaos-card
+          chaos-card--text
+          chaos-card--small
+          chaos-card--acid
+          chaos-action-card
+        "
+        data-chaos-card
+        data-chaos-type="interaction"
+        data-chaos-message-card
+      >
+
+        <p class="chaos-small-label">
+          VERY IMPORTANT BUTTON
+        </p>
+
+        <p
+          class="chaos-action-output"
+          data-chaos-message-output
+          aria-live="polite"
+        >
+          do not click.
+        </p>
+
+        <div
+          class="chaos-action-controls"
+          data-chaos-no-drag
+        >
+          <button
+            class="chaos-action-button"
+            type="button"
+            data-chaos-message-button
+          >
+            DO NOT CLICK
+          </button>
+        </div>
+
+        <ul
+          data-chaos-message-list
+          hidden
+        >
+          <li>why did you click it?</li>
+          <li>okay.</li>
+          <li>again?</li>
+          <li>this is becoming a problem.</li>
+          <li>nothing happens.</li>
+          <li>you have successfully wasted time.</li>
+        </ul>
+
+      </article>
+
 
       <!-- =====================
            CARD 10
-           MY MUSIC / DEMO
+           MAKE WEBSITE WORSE
       ====================== -->
 
       <article
@@ -729,104 +742,105 @@
           chaos-card--text
           chaos-card--medium
           chaos-card--black
-          chaos-audio-card
+          chaos-action-card
         "
         data-chaos-card
-        data-chaos-type="audio"
-        data-chaos-audio-card
+        data-chaos-type="interaction"
       >
 
         <p class="chaos-small-label">
-          MY AUDIO / DEMO
+          BAD IDEA GENERATOR
         </p>
 
+        <p class="chaos-big-note">
+          make the website
+          worse for a second.
+        </p>
 
         <div
-          class="chaos-wave"
-          aria-hidden="true"
-        >
-
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-
-        </div>
-
-
-        <p class="chaos-audio-title">
-          DEMO_002
-        </p>
-
-        <p class="chaos-audio-meta">
-          demo / aug 2026
-        </p>
-
-
-        <div
-          class="chaos-audio-controls"
+          class="chaos-action-controls"
           data-chaos-no-drag
         >
-
           <button
-            class="chaos-audio-button"
+            class="chaos-action-button chaos-action-button--inverse"
             type="button"
-            data-chaos-audio-toggle
-            aria-label="Play audio"
+            data-chaos-worse-button
           >
-            PLAY
+            MAKE IT WORSE
           </button>
-
-          <span
-            class="chaos-audio-time"
-            data-chaos-audio-time
-          >
-            00:00 / --:--
-          </span>
-
         </div>
-
-
-        <audio
-          preload="metadata"
-          src="audio/chaos/demo-002.mp3"
-          data-chaos-audio
-        ></audio>
 
       </article>
 
 
+      <!-- =====================
+           CARD 11
+           OPEN FAKE WINDOW
+      ====================== -->
 
-<!-- =====================
-     SKETCH
-====================== -->
+      <article
+        class="
+          chaos-card
+          chaos-card--text
+          chaos-card--medium
+          chaos-card--pink
+          chaos-action-card
+          chaos-window-card
+        "
+        data-chaos-card
+        data-chaos-type="interaction"
+        data-chaos-window-card
+      >
 
-<article
-  class="
-    chaos-card
-    chaos-card--small
-  "
-  data-chaos-card
->
+        <p class="chaos-small-label">
+          PERSONAL FILE / ALWAYS OPEN
+        </p>
 
-  <img
-    src="images/chaos/sketches/sketch-001.jpg"
-    alt="Sketch by Guy"
-    draggable="false"
-  >
+        <p class="chaos-big-note">
+          things I might
+          want to try later.
+        </p>
 
-  <div class="chaos-card-caption">
-    SKETCH_001
-  </div>
+        <div
+          class="chaos-action-controls"
+          data-chaos-no-drag
+        >
+          <button
+            class="chaos-action-button"
+            type="button"
+            data-chaos-window-open
+            data-chaos-window-title="brain-dump.txt"
+          >
+            OPEN BRAIN-DUMP.TXT
+          </button>
+        </div>
 
-</article>
+        <!--
+          EDIT THESE LINES WHENEVER A NEW THOUGHT SHOWS UP.
+          NO NEED TO MAKE THEM SOUND IMPORTANT.
+        -->
+        <template data-chaos-window-content>
 
+          <p class="chaos-window-kicker">
+            THINGS TO TRY / MAYBE
+          </p>
+
+          <p class="chaos-window-big-text">
+            make a song from one ugly sound.<br>
+            draw something before deciding what it is.<br>
+            photograph things that look accidentally designed.<br>
+            save references without explaining why.<br>
+            leave some things unfinished.
+          </p>
+
+          <div class="chaos-window-filemeta">
+            <span>FILE: brain-dump.txt</span>
+            <span>STATUS: keeps changing</span>
+          </div>
+
+        </template>
+
+      </article>
 
 
     </section>

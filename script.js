@@ -1595,6 +1595,18 @@ document.addEventListener(
         0;
 
 
+      let chaosPointerStartX =
+        0;
+
+
+      let chaosPointerStartY =
+        0;
+
+
+      let chaosDidDrag =
+        false;
+
+
 
       function isChaosDesktop() {
 
@@ -1826,6 +1838,35 @@ document.addEventListener(
 
 
       /* ======================================
+         IMAGE CARD HELPERS
+      ====================================== */
+
+      function isChaosImageCard(
+        card
+      ) {
+
+        if (!card) {
+          return false;
+        }
+
+        const type =
+          (
+            card.getAttribute(
+              "data-chaos-type"
+            ) || ""
+          ).toLowerCase();
+
+        return (
+          type === "image" ||
+          type === "sketch" ||
+          type === "photo"
+        );
+
+      }
+
+
+
+      /* ======================================
          DRAG
       ====================================== */
 
@@ -1860,6 +1901,18 @@ document.addEventListener(
                 return;
 
               }
+
+
+              chaosPointerStartX =
+                event.clientX;
+
+
+              chaosPointerStartY =
+                event.clientY;
+
+
+              chaosDidDrag =
+                false;
 
 
               event.preventDefault();
@@ -1915,6 +1968,23 @@ document.addEventListener(
           ) {
 
             return;
+
+          }
+
+
+          const pointerDistance =
+            Math.hypot(
+              event.clientX -
+                chaosPointerStartX,
+              event.clientY -
+                chaosPointerStartY
+            );
+
+
+          if (pointerDistance > 6) {
+
+            chaosDidDrag =
+              true;
 
           }
 
@@ -1988,6 +2058,17 @@ document.addEventListener(
         }
 
 
+        const releasedCard =
+          activeCard;
+
+
+        const shouldOpenImage =
+          !chaosDidDrag &&
+          isChaosImageCard(
+            releasedCard
+          );
+
+
         activeCard.classList.remove(
           "is-dragging"
         );
@@ -1995,6 +2076,18 @@ document.addEventListener(
 
         activeCard =
           null;
+
+
+        if (shouldOpenImage) {
+
+          releasedCard.dispatchEvent(
+            new CustomEvent(
+              "chaosimageopen",
+              { bubbles: true }
+            )
+          );
+
+        }
 
 
       }
@@ -2059,6 +2152,992 @@ document.addEventListener(
         }
       );
 
+
+    }
+
+
+
+
+
+    /* ========================================
+       ??? WEIRD INTERACTIONS
+    ======================================== */
+
+    const chaosMessageCards =
+      Array.from(
+        document.querySelectorAll(
+          "[data-chaos-message-card]"
+        )
+      );
+
+
+    chaosMessageCards.forEach(
+      function (card) {
+
+        const button =
+          card.querySelector(
+            "[data-chaos-message-button]"
+          );
+
+        const output =
+          card.querySelector(
+            "[data-chaos-message-output]"
+          );
+
+        const messageItems =
+          Array.from(
+            card.querySelectorAll(
+              "[data-chaos-message-list] li"
+            )
+          );
+
+        const messages =
+          messageItems
+            .map(
+              function (item) {
+                return item.textContent.trim();
+              }
+            )
+            .filter(Boolean);
+
+        let messageIndex = 0;
+
+        if (
+          button &&
+          output &&
+          messages.length > 0
+        ) {
+
+          button.addEventListener(
+            "click",
+            function () {
+
+              output.textContent =
+                messages[messageIndex];
+
+              messageIndex =
+                (
+                  messageIndex + 1
+                ) % messages.length;
+
+            }
+          );
+
+        }
+
+      }
+    );
+
+
+    const chaosWorseButtons =
+      Array.from(
+        document.querySelectorAll(
+          "[data-chaos-worse-button]"
+        )
+      );
+
+
+    let chaosWorseTimer = null;
+
+
+    chaosWorseButtons.forEach(
+      function (button) {
+
+        const originalText =
+          button.textContent.trim();
+
+        button.addEventListener(
+          "click",
+          function () {
+
+            window.clearTimeout(
+              chaosWorseTimer
+            );
+
+            document.body.classList.add(
+              "is-chaos-worse"
+            );
+
+            button.disabled = true;
+
+            button.textContent =
+              "BAD DECISION...";
+
+            chaosWorseTimer =
+              window.setTimeout(
+                function () {
+
+                  document.body.classList.remove(
+                    "is-chaos-worse"
+                  );
+
+                  chaosWorseButtons.forEach(
+                    function (item) {
+                      item.disabled = false;
+                    }
+                  );
+
+                  button.textContent =
+                    originalText;
+
+                },
+                1200
+              );
+
+          }
+        );
+
+      }
+    );
+
+
+
+    /* ========================================
+       ??? V5 / FAKE DESKTOP WINDOWS
+    ======================================== */
+
+    const chaosWindowCards =
+      Array.from(
+        document.querySelectorAll(
+          "[data-chaos-window-card]"
+        )
+      );
+
+
+    if (chaosWindowCards.length > 0) {
+
+      const chaosWindowLayer =
+        document.createElement(
+          "div"
+        );
+
+
+      chaosWindowLayer.className =
+        "chaos-window-layer";
+
+
+      chaosWindowLayer.setAttribute(
+        "data-chaos-window-layer",
+        ""
+      );
+
+
+      document.body.appendChild(
+        chaosWindowLayer
+      );
+
+
+      let chaosWindowZIndex = 610;
+      let activeChaosWindow = null;
+      let chaosWindowOffsetX = 0;
+      let chaosWindowOffsetY = 0;
+
+
+      function isChaosWindowDesktop() {
+
+        return window.matchMedia(
+          "(min-width: 761px)"
+        ).matches;
+
+      }
+
+
+      function bringChaosWindowToFront(
+        chaosWindow
+      ) {
+
+        if (!chaosWindow) {
+          return;
+        }
+
+        chaosWindowZIndex++;
+
+        chaosWindow.style.zIndex =
+          chaosWindowZIndex;
+
+      }
+
+
+      function positionChaosWindow(
+        chaosWindow
+      ) {
+
+        if (!chaosWindow) {
+          return;
+        }
+
+
+        if (!isChaosWindowDesktop()) {
+
+          chaosWindow.style.left = "";
+          chaosWindow.style.top = "";
+
+          return;
+
+        }
+
+
+        const windowWidth =
+          chaosWindow.offsetWidth || 430;
+
+        const windowHeight =
+          chaosWindow.offsetHeight || 320;
+
+
+        const maxX =
+          Math.max(
+            24,
+            window.innerWidth -
+              windowWidth -
+              24
+          );
+
+        const maxY =
+          Math.max(
+            100,
+            window.innerHeight -
+              windowHeight -
+              24
+          );
+
+
+        const minX =
+          Math.min(
+            60,
+            maxX
+          );
+
+        const minY =
+          Math.min(
+            120,
+            maxY
+          );
+
+
+        const x =
+          minX +
+          Math.random() *
+          Math.max(
+            0,
+            maxX - minX
+          );
+
+        const y =
+          minY +
+          Math.random() *
+          Math.max(
+            0,
+            maxY - minY
+          );
+
+
+        chaosWindow.style.left =
+          x + "px";
+
+        chaosWindow.style.top =
+          y + "px";
+
+      }
+
+
+      function closeTopChaosWindow() {
+
+        const openWindows =
+          Array.from(
+            chaosWindowLayer.querySelectorAll(
+              ".chaos-window"
+            )
+          );
+
+
+        if (openWindows.length === 0) {
+          return false;
+        }
+
+
+        openWindows.sort(
+          function (a, b) {
+
+            return (
+              Number.parseInt(
+                a.style.zIndex || "0",
+                10
+              ) -
+              Number.parseInt(
+                b.style.zIndex || "0",
+                10
+              )
+            );
+
+          }
+        );
+
+
+        const topWindow =
+          openWindows[
+            openWindows.length - 1
+          ];
+
+
+        if (topWindow) {
+
+          topWindow.remove();
+
+          return true;
+
+        }
+
+
+        return false;
+
+      }
+
+
+      chaosWindowCards.forEach(
+        function (card) {
+
+          const openButton =
+            card.querySelector(
+              "[data-chaos-window-open]"
+            );
+
+          const contentTemplate =
+            card.querySelector(
+              "[data-chaos-window-content]"
+            );
+
+
+          if (
+            !openButton ||
+            !contentTemplate
+          ) {
+            return;
+          }
+
+
+          openButton.addEventListener(
+            "click",
+            function () {
+
+              const title =
+                openButton.getAttribute(
+                  "data-chaos-window-title"
+                ) ||
+                "untitled.txt";
+
+
+              const chaosWindow =
+                document.createElement(
+                  "section"
+                );
+
+
+              chaosWindow.className =
+                "chaos-window";
+
+
+              chaosWindow.setAttribute(
+                "role",
+                "dialog"
+              );
+
+
+              chaosWindow.setAttribute(
+                "aria-label",
+                title
+              );
+
+
+              chaosWindow.setAttribute(
+                "tabindex",
+                "-1"
+              );
+
+
+              chaosWindow.innerHTML =
+                '<div class="chaos-window-titlebar" data-chaos-window-handle>' +
+                  '<span class="chaos-window-title"></span>' +
+                  '<button class="chaos-window-close" type="button" aria-label="Close window" data-chaos-window-close>×</button>' +
+                '</div>' +
+                '<div class="chaos-window-content" data-chaos-window-body></div>';
+
+
+              const titleElement =
+                chaosWindow.querySelector(
+                  ".chaos-window-title"
+                );
+
+
+              const bodyElement =
+                chaosWindow.querySelector(
+                  "[data-chaos-window-body]"
+                );
+
+
+              if (titleElement) {
+
+                titleElement.textContent =
+                  title;
+
+              }
+
+
+              if (bodyElement) {
+
+                bodyElement.appendChild(
+                  contentTemplate.content.cloneNode(
+                    true
+                  )
+                );
+
+              }
+
+
+              chaosWindowLayer.appendChild(
+                chaosWindow
+              );
+
+
+              bringChaosWindowToFront(
+                chaosWindow
+              );
+
+
+              positionChaosWindow(
+                chaosWindow
+              );
+
+
+              chaosWindow.focus();
+
+
+              const closeButton =
+                chaosWindow.querySelector(
+                  "[data-chaos-window-close]"
+                );
+
+
+              if (closeButton) {
+
+                closeButton.addEventListener(
+                  "click",
+                  function () {
+
+                    chaosWindow.remove();
+
+                  }
+                );
+
+              }
+
+
+              chaosWindow.addEventListener(
+                "pointerdown",
+                function () {
+
+                  bringChaosWindowToFront(
+                    chaosWindow
+                  );
+
+                }
+              );
+
+
+              const handle =
+                chaosWindow.querySelector(
+                  "[data-chaos-window-handle]"
+                );
+
+
+              if (handle) {
+
+                handle.addEventListener(
+                  "pointerdown",
+                  function (event) {
+
+                    if (
+                      !isChaosWindowDesktop() ||
+                      event.button !== 0 ||
+                      event.target.closest(
+                        "button, a, input, textarea, select"
+                      )
+                    ) {
+                      return;
+                    }
+
+
+                    event.preventDefault();
+
+
+                    activeChaosWindow =
+                      chaosWindow;
+
+
+                    bringChaosWindowToFront(
+                      activeChaosWindow
+                    );
+
+
+                    const rect =
+                      activeChaosWindow.getBoundingClientRect();
+
+
+                    chaosWindowOffsetX =
+                      event.clientX -
+                      rect.left;
+
+                    chaosWindowOffsetY =
+                      event.clientY -
+                      rect.top;
+
+
+                    activeChaosWindow.classList.add(
+                      "is-window-dragging"
+                    );
+
+                  }
+                );
+
+              }
+
+            }
+          );
+
+        }
+      );
+
+
+      document.addEventListener(
+        "pointermove",
+        function (event) {
+
+          if (
+            !activeChaosWindow ||
+            !isChaosWindowDesktop()
+          ) {
+            return;
+          }
+
+
+          const maxX =
+            Math.max(
+              0,
+              window.innerWidth -
+                activeChaosWindow.offsetWidth
+            );
+
+          const maxY =
+            Math.max(
+              0,
+              window.innerHeight -
+                activeChaosWindow.offsetHeight
+            );
+
+
+          let x =
+            event.clientX -
+            chaosWindowOffsetX;
+
+          let y =
+            event.clientY -
+            chaosWindowOffsetY;
+
+
+          x =
+            Math.max(
+              0,
+              Math.min(
+                x,
+                maxX
+              )
+            );
+
+          y =
+            Math.max(
+              0,
+              Math.min(
+                y,
+                maxY
+              )
+            );
+
+
+          activeChaosWindow.style.left =
+            x + "px";
+
+          activeChaosWindow.style.top =
+            y + "px";
+
+        }
+      );
+
+
+      function releaseChaosWindow() {
+
+        if (!activeChaosWindow) {
+          return;
+        }
+
+
+        activeChaosWindow.classList.remove(
+          "is-window-dragging"
+        );
+
+
+        activeChaosWindow = null;
+
+      }
+
+
+      document.addEventListener(
+        "pointerup",
+        releaseChaosWindow
+      );
+
+
+      document.addEventListener(
+        "pointercancel",
+        releaseChaosWindow
+      );
+
+
+      document.addEventListener(
+        "keydown",
+        function (event) {
+
+          if (
+            event.key === "Escape" &&
+            !document.body.classList.contains(
+              "chaos-lightbox-open"
+            )
+          ) {
+
+            closeTopChaosWindow();
+
+          }
+
+        }
+      );
+
+
+      window.addEventListener(
+        "resize",
+        function () {
+
+          if (!isChaosWindowDesktop()) {
+            return;
+          }
+
+
+          const openWindows =
+            Array.from(
+              chaosWindowLayer.querySelectorAll(
+                ".chaos-window"
+              )
+            );
+
+
+          openWindows.forEach(
+            function (chaosWindow) {
+
+              const rect =
+                chaosWindow.getBoundingClientRect();
+
+
+              if (
+                rect.right > window.innerWidth ||
+                rect.bottom > window.innerHeight
+              ) {
+
+                positionChaosWindow(
+                  chaosWindow
+                );
+
+              }
+
+            }
+          );
+
+        }
+      );
+
+    }
+
+
+    /* ========================================
+       ??? IMAGE LIGHTBOX
+    ======================================== */
+
+    const chaosImageCards =
+      Array.from(
+        document.querySelectorAll(
+          '[data-chaos-type="image"], [data-chaos-type="sketch"], [data-chaos-type="photo"]'
+        )
+      );
+
+
+    if (
+      chaosImageCards.length > 0
+    ) {
+
+      const chaosLightbox =
+        document.createElement(
+          "div"
+        );
+
+
+      chaosLightbox.className =
+        "chaos-lightbox";
+
+
+      chaosLightbox.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+
+      chaosLightbox.innerHTML =
+        '<button class="chaos-lightbox-backdrop" type="button" aria-label="Close image" data-chaos-lightbox-close></button>' +
+        '<div class="chaos-lightbox-content" role="dialog" aria-modal="true" aria-label="Image preview">' +
+          '<img class="chaos-lightbox-image" alt="" data-chaos-lightbox-image>' +
+          '<p class="chaos-lightbox-caption" data-chaos-lightbox-caption></p>' +
+        '</div>' +
+        '<button class="chaos-lightbox-close" type="button" data-chaos-lightbox-close>CLOSE ×</button>';
+
+
+      document.body.appendChild(
+        chaosLightbox
+      );
+
+
+      const chaosLightboxImage =
+        chaosLightbox.querySelector(
+          "[data-chaos-lightbox-image]"
+        );
+
+
+      const chaosLightboxCaption =
+        chaosLightbox.querySelector(
+          "[data-chaos-lightbox-caption]"
+        );
+
+
+      const chaosLightboxCloseButton =
+        chaosLightbox.querySelector(
+          ".chaos-lightbox-close"
+        );
+
+
+      let chaosLightboxPreviousFocus =
+        null;
+
+
+      function openChaosLightbox(
+        card
+      ) {
+
+        const image =
+          card.querySelector(
+            "img"
+          );
+
+
+        if (
+          !image ||
+          !chaosLightboxImage
+        ) {
+
+          return;
+
+        }
+
+
+        const caption =
+          card.querySelector(
+            ".chaos-card-caption"
+          );
+
+
+        chaosLightboxPreviousFocus =
+          document.activeElement;
+
+
+        chaosLightboxImage.src =
+          image.currentSrc ||
+          image.src;
+
+
+        chaosLightboxImage.alt =
+          image.alt ||
+          "Image preview";
+
+
+        if (chaosLightboxCaption) {
+
+          chaosLightboxCaption.textContent =
+            caption
+              ? caption.textContent.trim()
+              : "";
+
+
+          chaosLightboxCaption.hidden =
+            !chaosLightboxCaption.textContent;
+
+        }
+
+
+        chaosLightbox.classList.add(
+          "is-open"
+        );
+
+
+        chaosLightbox.setAttribute(
+          "aria-hidden",
+          "false"
+        );
+
+
+        document.body.classList.add(
+          "chaos-lightbox-open"
+        );
+
+
+        if (chaosLightboxCloseButton) {
+
+          chaosLightboxCloseButton.focus();
+
+        }
+
+      }
+
+
+      function closeChaosLightbox() {
+
+        if (
+          !chaosLightbox.classList.contains(
+            "is-open"
+          )
+        ) {
+
+          return;
+
+        }
+
+
+        chaosLightbox.classList.remove(
+          "is-open"
+        );
+
+
+        chaosLightbox.setAttribute(
+          "aria-hidden",
+          "true"
+        );
+
+
+        document.body.classList.remove(
+          "chaos-lightbox-open"
+        );
+
+
+        if (chaosLightboxImage) {
+
+          chaosLightboxImage.removeAttribute(
+            "src"
+          );
+
+        }
+
+
+        if (
+          chaosLightboxPreviousFocus &&
+          typeof chaosLightboxPreviousFocus.focus ===
+            "function"
+        ) {
+
+          chaosLightboxPreviousFocus.focus();
+
+        }
+
+      }
+
+
+      chaosImageCards.forEach(
+        function (card) {
+
+          card.setAttribute(
+            "title",
+            "Click to view image"
+          );
+
+
+          card.addEventListener(
+            "chaosimageopen",
+            function () {
+
+              openChaosLightbox(
+                card
+              );
+
+            }
+          );
+
+
+          card.addEventListener(
+            "click",
+            function () {
+
+              const isDesktop =
+                window.matchMedia(
+                  "(min-width: 761px)"
+                ).matches;
+
+
+              if (!isDesktop) {
+
+                openChaosLightbox(
+                  card
+                );
+
+              }
+
+            }
+          );
+
+        }
+      );
+
+
+      chaosLightbox
+        .querySelectorAll(
+          "[data-chaos-lightbox-close]"
+        )
+        .forEach(
+          function (button) {
+
+            button.addEventListener(
+              "click",
+              closeChaosLightbox
+            );
+
+          }
+        );
+
+
+      document.addEventListener(
+        "keydown",
+        function (event) {
+
+          if (
+            event.key === "Escape"
+          ) {
+
+            closeChaosLightbox();
+
+          }
+
+        }
+      );
 
     }
 
