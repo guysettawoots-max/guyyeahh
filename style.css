@@ -2687,3 +2687,166 @@ figcaption {
   }
 
 }
+
+
+/* ========================================
+   ??? V2 / CONTENT CARDS
+
+   These classes support easy-to-add cards from
+   chaos-card-template.html.
+======================================== */
+
+.chaos-card[data-chaos-type="photo"] img,
+.chaos-card[data-chaos-type="sketch"] img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+
+/* ========================================
+   CHAOS AUDIO CARD
+======================================== */
+
+.chaos-audio-card {
+  overflow: hidden;
+}
+
+
+.chaos-audio-card .chaos-wave {
+  margin-top: 10px;
+}
+
+
+.chaos-audio-card .chaos-wave span {
+  opacity: 0.35;
+  animation-play-state: paused;
+  transition: opacity 0.2s ease;
+}
+
+
+.chaos-audio-card.is-playing .chaos-wave span {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+
+.chaos-audio-title {
+  margin: 0 0 8px 0;
+
+  font-size: clamp(
+    25px,
+    2.8vw,
+    38px
+  );
+
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+
+.chaos-audio-meta {
+  margin: 0;
+
+  font-size: 10px;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+.chaos-audio-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+
+  margin-top: 24px;
+  padding-top: 14px;
+
+  border-top: 1px solid currentColor;
+}
+
+
+.chaos-audio-button {
+  min-width: 78px;
+
+  padding: 10px 12px;
+
+  border: 1px solid currentColor;
+
+  background: transparent;
+  color: inherit;
+
+  font-family: inherit;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+
+  cursor: pointer;
+}
+
+
+.chaos-audio-button:hover,
+.chaos-audio-button:focus-visible {
+  background: currentColor;
+  color: #ffffff;
+  outline: none;
+}
+
+
+.chaos-card--black .chaos-audio-button:hover,
+.chaos-card--black .chaos-audio-button:focus-visible {
+  background: #ffffff;
+  color: #111111;
+}
+
+
+.chaos-audio-time {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+
+.chaos-audio-card.has-audio-error .chaos-audio-button {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+
+.chaos-audio-card audio {
+  display: none;
+}
+
+
+/* ========================================
+   CHAOS INTERACTIVE CONTENT
+======================================== */
+
+[data-chaos-no-drag] {
+  touch-action: manipulation;
+}
+
+
+.chaos-inline-link {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+
+.chaos-inline-link:hover {
+  text-decoration-style: wavy;
+}
+
+
+@media (max-width: 760px) {
+
+  .chaos-audio-controls {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+}
+

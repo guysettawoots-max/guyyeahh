@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Chaos Card Template — Guy</title>
+
+  <!--
+    THIS IS A PRIVATE HELPER FILE.
+    IT IS NOT A REAL PAGE OF THE WEBSITE.
+  -->
+
+  <meta
+    name="robots"
+    content="noindex, nofollow"
+  >
+
+</head>
+
+<body>
+
+
+  <!-- ==================================================
+       CHAOS CARD LIBRARY
+
+       HOW TO USE
+
+       1. OPEN unknown.html
+       2. FIND: ADD NEW STUFF HERE
+       3. CHOOSE ONE CARD BELOW
+       4. COPY ONLY <article> ... </article>
+       5. PASTE IT INSIDE .chaos-space
+       6. CHANGE THE TEXT / FILE PATH
+       7. SAVE
+
+       IMPORTANT:
+       KEEP data-chaos-card ON EVERY CARD.
+
+       SIZE OPTIONS:
+       chaos-card--small
+       chaos-card--medium
+       chaos-card--large
+
+       COLOR OPTIONS FOR TEXT CARDS:
+       chaos-card--black
+       chaos-card--acid
+       chaos-card--pink
+  =================================================== -->
+
+
+  <!-- ==================================================
+       CARD 01 — SKETCH / IMAGE
+
+       BEFORE USING:
+       CREATE THIS FOLDER IF IT DOES NOT EXIST:
+       images/chaos/sketches/
+
+       EXAMPLE FILE:
+       images/chaos/sketches/sketch-001.jpg
+  =================================================== -->
+
+  <template id="chaos-template-sketch">
+
+    <article
+      class="
+        chaos-card
+        chaos-card--medium
+      "
+      data-chaos-card
+      data-chaos-type="sketch"
+    >
+
+      <img
+        src="images/chaos/sketches/sketch-001.jpg"
+        alt="Sketch by Guy"
+        loading="lazy"
+        decoding="async"
+        draggable="false"
+      >
+
+      <div class="chaos-card-caption">
+        SKETCH_001
+      </div>
+
+    </article>
+
+  </template>
+
+
+  <!-- ==================================================
+       CARD 02 — PHOTO
+
+       BEFORE USING:
+       CREATE THIS FOLDER IF IT DOES NOT EXIST:
+       images/chaos/photos/
+
+       EXAMPLE FILE:
+       images/chaos/photos/photo-001.jpg
+  =================================================== -->
+
+  <template id="chaos-template-photo">
+
+    <article
+      class="
+        chaos-card
+        chaos-card--large
+      "
+      data-chaos-card
+      data-chaos-type="photo"
+    >
+
+      <img
+        src="images/chaos/photos/photo-001.jpg"
+        alt="Photo by Guy"
+        loading="lazy"
+        decoding="async"
+        draggable="false"
+      >
+
+      <div class="chaos-card-caption">
+        IMG_0001.JPG / SOMEWHERE
+      </div>
+
+    </article>
+
+  </template>
+
+
+  <!-- ==================================================
+       CARD 03 — NOTE
+
+       NO EXTRA FILE NEEDED.
+       JUST CHANGE THE LABEL + TEXT.
+  =================================================== -->
+
+  <template id="chaos-template-note">
+
+    <article
+      class="
+        chaos-card
+        chaos-card--text
+        chaos-card--small
+        chaos-card--acid
+      "
+      data-chaos-card
+      data-chaos-type="note"
+    >
+
+      <p class="chaos-small-label">
+        NOTE / TODAY
+      </p>
+
+      <p class="chaos-note">
+        write something
+        unnecessary here.
+      </p>
+
+    </article>
+
+  </template>
+
+
+  <!-- ==================================================
+       CARD 04 — MUSIC / AUDIO
+
+       BEFORE USING:
+       CREATE THIS FOLDER IF IT DOES NOT EXIST:
+       audio/chaos/
+
+       PUT YOUR MP3 HERE, FOR EXAMPLE:
+       audio/chaos/demo-001.mp3
+
+       THEN CHANGE:
+       - AUDIO TITLE
+       - META TEXT
+       - src="audio/chaos/demo-001.mp3"
+
+       IMPORTANT:
+       KEEP data-chaos-no-drag ON THE CONTROLS.
+       THIS ALLOWS THE PLAY BUTTON TO WORK
+       WITHOUT DRAGGING THE CARD.
+  =================================================== -->
+
+  <template id="chaos-template-audio">
+
+    <article
+      class="
+        chaos-card
+        chaos-card--text
+        chaos-card--medium
+        chaos-card--black
+        chaos-audio-card
+      "
+      data-chaos-card
+      data-chaos-type="audio"
+      data-chaos-audio-card
+    >
+
+      <p class="chaos-small-label">
+        MY AUDIO / DEMO
+      </p>
+
+      <div
+        class="chaos-wave"
+        aria-hidden="true"
+      >
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </div>
+
+      <p class="chaos-audio-title">
+        UNTITLED_001
+      </p>
+
+      <p class="chaos-audio-meta">
+        demo / aug 2026
+      </p>
+
+      <div
+        class="chaos-audio-controls"
+        data-chaos-no-drag
+      >
+
+        <button
+          class="chaos-audio-button"
+          type="button"
+          data-chaos-audio-toggle
+        >
+          PLAY
+        </button>
+
+        <span
+          class="chaos-audio-time"
+          data-chaos-audio-time
+        >
+          00:00 / --:--
+        </span>
+
+      </div>
+
+      <audio
+        preload="metadata"
+        src="audio/chaos/demo-001.mp3"
+        data-chaos-audio
+      ></audio>
+
+    </article>
+
+  </template>
+
+
+  <!-- ==================================================
+       OPTIONAL COMBINATIONS
+
+       NOTE / BLACK:
+       chaos-card chaos-card--text chaos-card--small chaos-card--black
+
+       NOTE / PINK:
+       chaos-card chaos-card--text chaos-card--medium chaos-card--pink
+
+       BIG SKETCH:
+       chaos-card chaos-card--large
+
+       SMALL PHOTO:
+       chaos-card chaos-card--small
+  =================================================== -->
+
+
+</body>
+
+</html>

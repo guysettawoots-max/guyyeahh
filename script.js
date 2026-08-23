@@ -1622,6 +1622,10 @@ document.addEventListener(
         ) {
 
 
+          chaosSpace.style.minHeight =
+            "";
+
+
           chaosCards.forEach(
             function (card) {
 
@@ -1665,6 +1669,28 @@ document.addEventListener(
 
 
         /* DESKTOP */
+
+        /*
+          Give the chaos space more room automatically
+          as more cards are added in the future.
+        */
+
+        const extraCardGroups =
+          Math.max(
+            0,
+            Math.ceil(
+              (chaosCards.length - 8) / 4
+            )
+          );
+
+
+        chaosSpace.style.minHeight =
+          (
+            1350 +
+            (extraCardGroups * 420)
+          ) +
+          "px";
+
 
         const spaceWidth =
           chaosSpace.clientWidth;
@@ -1817,6 +1843,19 @@ document.addEventListener(
                 event.button !==
                   0
               ) {
+
+                return;
+
+              }
+
+
+              const interactiveTarget =
+                event.target.closest(
+                  "button, a, input, textarea, select, audio, video, [data-chaos-no-drag]"
+                );
+
+
+              if (interactiveTarget) {
 
                 return;
 
@@ -2022,6 +2061,309 @@ document.addEventListener(
 
 
     }
+
+
+
+    /* ========================================
+       ??? AUDIO CARDS
+    ======================================== */
+
+    const chaosAudioCards =
+      Array.from(
+        document.querySelectorAll(
+          "[data-chaos-audio-card]"
+        )
+      );
+
+
+    function formatChaosAudioTime(
+      seconds
+    ) {
+
+      if (
+        !Number.isFinite(seconds)
+      ) {
+
+        return "--:--";
+
+      }
+
+
+      const minutes =
+        Math.floor(
+          seconds / 60
+        );
+
+
+      const remainingSeconds =
+        Math.floor(
+          seconds % 60
+        );
+
+
+      return (
+        String(minutes)
+          .padStart(2, "0") +
+        ":" +
+        String(remainingSeconds)
+          .padStart(2, "0")
+      );
+
+    }
+
+
+    function pauseOtherChaosAudio(
+      currentAudio
+    ) {
+
+      chaosAudioCards.forEach(
+        function (card) {
+
+          const audio =
+            card.querySelector(
+              "[data-chaos-audio]"
+            );
+
+
+          if (
+            audio &&
+            audio !== currentAudio &&
+            !audio.paused
+          ) {
+
+            audio.pause();
+
+          }
+
+        }
+      );
+
+    }
+
+
+    chaosAudioCards.forEach(
+      function (card) {
+
+        const audio =
+          card.querySelector(
+            "[data-chaos-audio]"
+          );
+
+
+        const toggle =
+          card.querySelector(
+            "[data-chaos-audio-toggle]"
+          );
+
+
+        const time =
+          card.querySelector(
+            "[data-chaos-audio-time]"
+          );
+
+
+        if (
+          !audio ||
+          !toggle
+        ) {
+
+          return;
+
+        }
+
+
+        function updateAudioTime() {
+
+          if (!time) {
+            return;
+          }
+
+
+          time.textContent =
+            formatChaosAudioTime(
+              audio.currentTime
+            ) +
+            " / " +
+            formatChaosAudioTime(
+              audio.duration
+            );
+
+        }
+
+
+        function setAudioState(
+          isPlaying
+        ) {
+
+          card.classList.toggle(
+            "is-playing",
+            isPlaying
+          );
+
+
+          toggle.textContent =
+            isPlaying
+              ? "PAUSE"
+              : "PLAY";
+
+
+          toggle.setAttribute(
+            "aria-label",
+            isPlaying
+              ? "Pause audio"
+              : "Play audio"
+          );
+
+        }
+
+
+        toggle.addEventListener(
+          "click",
+          function () {
+
+            if (
+              card.classList.contains(
+                "has-audio-error"
+              )
+            ) {
+
+              return;
+
+            }
+
+
+            if (audio.paused) {
+
+              pauseOtherChaosAudio(
+                audio
+              );
+
+
+              const playPromise =
+                audio.play();
+
+
+              if (
+                playPromise &&
+                typeof playPromise.catch ===
+                  "function"
+              ) {
+
+                playPromise.catch(
+                  function () {
+
+                    setAudioState(
+                      false
+                    );
+
+                  }
+                );
+
+              }
+
+            }
+            else {
+
+              audio.pause();
+
+            }
+
+          }
+        );
+
+
+        audio.addEventListener(
+          "play",
+          function () {
+
+            setAudioState(
+              true
+            );
+
+          }
+        );
+
+
+        audio.addEventListener(
+          "pause",
+          function () {
+
+            setAudioState(
+              false
+            );
+
+          }
+        );
+
+
+        audio.addEventListener(
+          "ended",
+          function () {
+
+            audio.currentTime =
+              0;
+
+
+            setAudioState(
+              false
+            );
+
+
+            updateAudioTime();
+
+          }
+        );
+
+
+        audio.addEventListener(
+          "loadedmetadata",
+          updateAudioTime
+        );
+
+
+        audio.addEventListener(
+          "timeupdate",
+          updateAudioTime
+        );
+
+
+        audio.addEventListener(
+          "error",
+          function () {
+
+            card.classList.add(
+              "has-audio-error"
+            );
+
+
+            toggle.textContent =
+              "NO FILE";
+
+
+            toggle.disabled =
+              true;
+
+
+            if (time) {
+
+              time.textContent =
+                "CHECK AUDIO PATH";
+
+            }
+
+          }
+        );
+
+
+        setAudioState(
+          false
+        );
+
+
+        updateAudioTime();
+
+      }
+    );
 
 
 

@@ -233,16 +233,14 @@
 
 
 
-        <!--
-          SCRIPT WILL AUTOMATICALLY
-          TURN THIS PLAY INTO ???
-        -->
+        <!-- ??? -->
 
         <a
           class="menu-item"
-          href="#"
+          href="unknown.html"
+          data-chaos-nav
         >
-          PLAY
+          ???
         </a>
 
 
@@ -251,7 +249,7 @@
 
         <a
           class="menu-item"
-          href="#"
+          href="contact.html"
         >
           CONTACT
         </a>
@@ -338,6 +336,19 @@
     >
 
 
+      <!-- ==================================================
+           ADD NEW STUFF HERE
+
+           1. OPEN chaos-card-template.html
+           2. COPY THE CARD TYPE YOU WANT
+           3. PASTE IT INSIDE THIS CHAOS SPACE
+           4. CHANGE ONLY THE CONTENT / FILE PATH
+
+           KEEP data-chaos-card ON EVERY CARD.
+           THE SCRIPT WILL SCATTER + DRAG IT AUTOMATICALLY.
+      =================================================== -->
+
+
 
       <!-- =====================
            CARD 01
@@ -350,11 +361,14 @@
           chaos-card--large
         "
         data-chaos-card
+        data-chaos-type="image"
       >
 
         <img
           src="images/project-01/thumbnail.jpg"
           alt="Random visual"
+          loading="lazy"
+          decoding="async"
           draggable="false"
         >
 
@@ -379,11 +393,14 @@
           chaos-card--medium
         "
         data-chaos-card
+        data-chaos-type="image"
       >
 
         <img
           src="images/project-02/thumbnail.jpg"
           alt="Random experiment"
+          loading="lazy"
+          decoding="async"
           draggable="false"
         >
 
@@ -410,6 +427,7 @@
           chaos-card--acid
         "
         data-chaos-card
+        data-chaos-type="list"
       >
 
         <p class="chaos-small-label">
@@ -457,6 +475,7 @@
           chaos-card--black
         "
         data-chaos-card
+        data-chaos-type="text"
       >
 
         <p class="chaos-stamp">
@@ -484,6 +503,7 @@
           chaos-card--small
         "
         data-chaos-card
+        data-chaos-type="note"
       >
 
         <p class="chaos-small-label">
@@ -511,6 +531,7 @@
           chaos-card--medium
         "
         data-chaos-card
+        data-chaos-type="listening"
       >
 
         <p class="chaos-small-label">
@@ -556,6 +577,7 @@
           chaos-card--small
         "
         data-chaos-card
+        data-chaos-type="experiment"
       >
 
 
@@ -595,6 +617,7 @@
           chaos-card--pink
         "
         data-chaos-card
+        data-chaos-type="note"
       >
 
         <p class="chaos-small-label">
@@ -608,6 +631,177 @@
         </p>
 
       </article>
+
+
+      <!-- =====================
+           CARD 09
+           MY MUSIC / DEMO
+      ====================== -->
+
+      <article
+        class="
+          chaos-card
+          chaos-card--text
+          chaos-card--medium
+          chaos-card--black
+          chaos-audio-card
+        "
+        data-chaos-card
+        data-chaos-type="audio"
+        data-chaos-audio-card
+      >
+
+        <p class="chaos-small-label">
+          MY AUDIO / DEMO
+        </p>
+
+
+        <div
+          class="chaos-wave"
+          aria-hidden="true"
+        >
+
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+
+        </div>
+
+
+        <p class="chaos-audio-title">
+          DEMO_001
+        </p>
+
+        <p class="chaos-audio-meta">
+          demo / aug 2026
+        </p>
+
+
+        <div
+          class="chaos-audio-controls"
+          data-chaos-no-drag
+        >
+
+          <button
+            class="chaos-audio-button"
+            type="button"
+            data-chaos-audio-toggle
+            aria-label="Play audio"
+          >
+            PLAY
+          </button>
+
+          <span
+            class="chaos-audio-time"
+            data-chaos-audio-time
+          >
+            00:00 / --:--
+          </span>
+
+        </div>
+
+
+        <audio
+          preload="metadata"
+          src="audio/chaos/demo-001.mp3"
+          data-chaos-audio
+        ></audio>
+
+      </article>
+
+
+
+      <!-- =====================
+           CARD 10
+           MY MUSIC / DEMO
+      ====================== -->
+
+      <article
+        class="
+          chaos-card
+          chaos-card--text
+          chaos-card--medium
+          chaos-card--black
+          chaos-audio-card
+        "
+        data-chaos-card
+        data-chaos-type="audio"
+        data-chaos-audio-card
+      >
+
+        <p class="chaos-small-label">
+          MY AUDIO / DEMO
+        </p>
+
+
+        <div
+          class="chaos-wave"
+          aria-hidden="true"
+        >
+
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+
+        </div>
+
+
+        <p class="chaos-audio-title">
+          DEMO_002
+        </p>
+
+        <p class="chaos-audio-meta">
+          demo / aug 2026
+        </p>
+
+
+        <div
+          class="chaos-audio-controls"
+          data-chaos-no-drag
+        >
+
+          <button
+            class="chaos-audio-button"
+            type="button"
+            data-chaos-audio-toggle
+            aria-label="Play audio"
+          >
+            PLAY
+          </button>
+
+          <span
+            class="chaos-audio-time"
+            data-chaos-audio-time
+          >
+            00:00 / --:--
+          </span>
+
+        </div>
+
+
+        <audio
+          preload="metadata"
+          src="audio/chaos/demo-002.mp3"
+          data-chaos-audio
+        ></audio>
+
+      </article>
+
+
 
 
     </section>

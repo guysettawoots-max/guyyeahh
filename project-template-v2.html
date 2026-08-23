@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+
+  <!-- ==================================================
+       PROJECT TEMPLATE V2 / BEGINNER FRIENDLY
+
+       HOW TO USE THIS FILE
+
+       1. DUPLICATE THIS FILE.
+       2. RENAME THE COPY, FOR EXAMPLE:
+          project-04.html
+       3. CREATE A MATCHING IMAGE FOLDER:
+          images/project-04/
+       4. USE FIND + REPLACE ALL FOR THE TOKENS BELOW.
+       5. ADD / REMOVE GALLERY SECTIONS AS NEEDED.
+       6. COPY THE READY-MADE WORK CARD AT THE BOTTOM
+          INTO work.html.
+       7. UPDATE PREVIOUS / NEXT LINKS.
+       8. WHEN READY TO PUBLISH, DELETE THE noindex TAG.
+       9. TEST, COMMIT, THEN PUSH WITH GITHUB DESKTOP.
+
+       REPLACE THESE TOKENS
+
+       PROJECT-SLUG
+       example: project-04
+
+       PROJECT-NAME
+       example: Cloud Bread
+
+       PROJECT-NUMBER
+       example: PROJECT 04
+
+       PROJECT-CATEGORY
+       example: KV / Illustration
+
+       PROJECT-FILTERS
+       machine-readable categories for work.html
+       allowed values:
+       kv illustration motion 3d fine-art
+       example: kv illustration
+
+       PROJECT-YEAR
+       example: 2026
+
+       PROJECT-TYPE
+       example: Client / Selected Work
+
+       PROJECT-DESCRIPTION
+       example:
+       A visual identity project exploring softness,
+       bread and cloud-like forms.
+
+       RECOMMENDED IMAGE FOLDER
+
+       images/
+       └── PROJECT-SLUG/
+           ├── thumbnail.jpg   -> WORK page card
+           ├── hero.jpg        -> first image on project page
+           ├── image-02.jpg    -> optional
+           ├── image-03.jpg    -> optional
+           ├── image-04.jpg    -> optional
+           └── image-05.jpg    -> optional
+
+       IMPORTANT
+       If an optional image does not exist, delete its
+       whole gallery section. Do not leave a broken image.
+  =================================================== -->
+
+
+
+  <!-- =========================
+       PAGE INFO
+       AUTO-FILLED BY REPLACE ALL
+  ========================== -->
+
+  <title>
+    PROJECT-NAME — Guy
+  </title>
+
+
+  <meta
+    name="description"
+    content="PROJECT-DESCRIPTION"
+  >
+
+
+
+  <!-- =========================
+       DRAFT SAFETY
+
+       KEEP THIS WHILE BUILDING.
+       DELETE THE WHOLE META TAG
+       WHEN THE PROJECT IS READY
+       TO BE PUBLISHED / INDEXED.
+  ========================== -->
+
+  <meta
+    name="robots"
+    content="noindex, nofollow"
+  >
+
+
+
+  <!-- =========================
+       FAVICON
+       DO NOT CHANGE
+  ========================== -->
+
+  <link
+    rel="icon"
+    href="favicon-v2.svg?v=2"
+    type="image/svg+xml"
+  >
+
+
+
+  <!-- =========================
+       CANONICAL
+       AUTO-FILLED BY REPLACE ALL
+  ========================== -->
+
+  <link
+    rel="canonical"
+    href="https://guysettawoots-max.github.io/guyyeahh/PROJECT-SLUG.html"
+  >
+
+
+
+  <!-- =========================
+       OPEN GRAPH
+       AUTO-FILLED BY REPLACE ALL
+  ========================== -->
+
+  <meta
+    property="og:type"
+    content="article"
+  >
+
+
+  <meta
+    property="og:site_name"
+    content="Guy"
+  >
+
+
+  <meta
+    property="og:title"
+    content="PROJECT-NAME — Guy"
+  >
+
+
+  <meta
+    property="og:description"
+    content="PROJECT-DESCRIPTION"
+  >
+
+
+  <meta
+    property="og:url"
+    content="https://guysettawoots-max.github.io/guyyeahh/PROJECT-SLUG.html"
+  >
+
+
+  <meta
+    property="og:image"
+    content="https://guysettawoots-max.github.io/guyyeahh/images/PROJECT-SLUG/hero.jpg"
+  >
+
+
+  <meta
+    property="og:image:alt"
+    content="PROJECT-NAME by Guy"
+  >
+
+
+
+  <!-- =========================
+       X / TWITTER
+       AUTO-FILLED BY REPLACE ALL
+  ========================== -->
+
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
+
+
+  <meta
+    name="twitter:title"
+    content="PROJECT-NAME — Guy"
+  >
+
+
+  <meta
+    name="twitter:description"
+    content="PROJECT-DESCRIPTION"
+  >
+
+
+  <meta
+    name="twitter:image"
+    content="https://guysettawoots-max.github.io/guyyeahh/images/PROJECT-SLUG/hero.jpg"
+  >
+
+
+
+  <!-- =========================
+       CSS
+       DO NOT CHANGE
+  ========================== -->
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       NAVIGATION
+       NORMALLY DO NOT CHANGE
+  ========================== -->
+
+  <header class="site-header">
+
+    <nav class="navigation">
+
+
+      <a
+        class="logo"
+        href="index.html"
+      >
+        GUY
+      </a>
+
+
+      <div class="menu">
+
+
+        <a
+          class="menu-item"
+          href="me.html"
+        >
+          ME
+        </a>
+
+
+
+        <div
+          class="work-menu"
+          data-work-menu
+        >
+
+          <button
+            class="menu-item work-toggle active"
+            type="button"
+            data-work-toggle
+            aria-expanded="false"
+          >
+
+            WORK
+
+            <span class="work-arrow">
+              ↓
+            </span>
+
+          </button>
+
+
+          <div class="work-dropdown">
+
+            <a
+              href="work.html?filter=all"
+              data-dropdown-filter="all"
+            >
+              ALL
+            </a>
+
+
+            <a
+              href="work.html?filter=kv"
+              data-dropdown-filter="kv"
+            >
+              KV
+            </a>
+
+
+            <a
+              href="work.html?filter=illustration"
+              data-dropdown-filter="illustration"
+            >
+              ILLUSTRATION
+            </a>
+
+
+            <a
+              href="work.html?filter=motion"
+              data-dropdown-filter="motion"
+            >
+              MOTION
+            </a>
+
+
+            <a
+              href="work.html?filter=3d"
+              data-dropdown-filter="3d"
+            >
+              3D
+            </a>
+
+
+            <a
+              href="work.html?filter=fine-art"
+              data-dropdown-filter="fine-art"
+            >
+              FINE ART
+            </a>
+
+          </div>
+
+        </div>
+
+
+
+        <a
+          class="menu-item"
+          href="unknown.html"
+        >
+          ???
+        </a>
+
+
+
+        <a
+          class="menu-item"
+          href="contact.html"
+        >
+          CONTACT
+        </a>
+
+
+      </div>
+
+
+    </nav>
+
+  </header>
+
+
+
+  <!-- =========================
+       PROJECT
+  ========================== -->
+
+  <main class="project-page">
+
+
+
+    <!-- =========================
+         PROJECT HEADER
+         AUTO-FILLED BY REPLACE ALL
+    ========================== -->
+
+    <section class="project-header">
+
+
+      <div class="project-header-label">
+
+        <p>
+          PROJECT-NUMBER
+        </p>
+
+      </div>
+
+
+
+      <div class="project-header-main">
+
+
+        <h1>
+          PROJECT-NAME
+        </h1>
+
+
+
+        <div class="project-meta">
+
+
+          <!-- CATEGORY -->
+
+          <div>
+
+            <p class="project-meta-label">
+              CATEGORY
+            </p>
+
+            <p>
+              PROJECT-CATEGORY
+            </p>
+
+          </div>
+
+
+
+          <!-- YEAR -->
+
+          <div>
+
+            <p class="project-meta-label">
+              YEAR
+            </p>
+
+            <p>
+              PROJECT-YEAR
+            </p>
+
+          </div>
+
+
+
+          <!-- TYPE -->
+
+          <div>
+
+            <p class="project-meta-label">
+              TYPE
+            </p>
+
+            <p>
+              PROJECT-TYPE
+            </p>
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         HERO
+
+         REQUIRED:
+         images/PROJECT-SLUG/hero.jpg
+
+         HERO LOADS IMMEDIATELY.
+    ========================== -->
+
+    <section class="project-media-section">
+
+      <figure class="media-wide">
+
+
+        <img
+          src="images/PROJECT-SLUG/hero.jpg"
+          alt="PROJECT-NAME main visual"
+          loading="eager"
+          fetchpriority="high"
+        >
+
+
+        <figcaption>
+          Main visual / PROJECT-NAME
+        </figcaption>
+
+
+      </figure>
+
+    </section>
+
+
+
+    <!-- =========================
+         ABOUT
+
+         EDIT THIS TEXT MANUALLY.
+
+         EASY WRITING GUIDE:
+         LEAD      = What is this project?
+         PARAGRAPH = Brief / context / objective
+         PARAGRAPH = Your role / process / thought
+    ========================== -->
+
+    <section class="project-description">
+
+
+      <div class="project-description-label">
+
+        <p>
+          ABOUT
+        </p>
+
+      </div>
+
+
+
+      <div class="project-description-text">
+
+
+        <p class="project-lead">
+          WRITE YOUR MAIN PROJECT INTRODUCTION HERE.
+        </p>
+
+
+        <p>
+          Write about the idea, brief, objective,
+          context or story behind the project here.
+        </p>
+
+
+        <p>
+          Write about your role, process,
+          collaborators, materials, techniques,
+          challenges, or what you still like about it.
+        </p>
+
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         OPTIONAL BLOCK A
+         WIDE IMAGE
+
+         FILE:
+         images/PROJECT-SLUG/image-02.jpg
+
+         DELETE THIS WHOLE SECTION
+         IF image-02.jpg DOES NOT EXIST.
+
+         DUPLICATE THIS WHOLE SECTION
+         IF YOU NEED MORE WIDE IMAGES.
+    ========================== -->
+
+    <section class="project-media-section">
+
+      <figure class="media-wide">
+
+
+        <img
+          src="images/PROJECT-SLUG/image-02.jpg"
+          alt="PROJECT-NAME project detail"
+          loading="lazy"
+          decoding="async"
+        >
+
+
+        <figcaption>
+          IMAGE CAPTION
+        </figcaption>
+
+
+      </figure>
+
+    </section>
+
+
+
+    <!-- =========================
+         OPTIONAL BLOCK B
+         TWO IMAGES
+
+         FILES:
+         images/PROJECT-SLUG/image-03.jpg
+         images/PROJECT-SLUG/image-04.jpg
+
+         DELETE THIS WHOLE SECTION
+         IF YOU DO NOT NEED THIS LAYOUT.
+    ========================== -->
+
+    <section class="project-media-section">
+
+      <div class="media-two">
+
+
+        <figure>
+
+
+          <img
+            src="images/PROJECT-SLUG/image-03.jpg"
+            alt="PROJECT-NAME project detail"
+            loading="lazy"
+            decoding="async"
+          >
+
+
+          <figcaption>
+            IMAGE CAPTION
+          </figcaption>
+
+
+        </figure>
+
+
+
+        <figure>
+
+
+          <img
+            src="images/PROJECT-SLUG/image-04.jpg"
+            alt="PROJECT-NAME project detail"
+            loading="lazy"
+            decoding="async"
+          >
+
+
+          <figcaption>
+            IMAGE CAPTION
+          </figcaption>
+
+
+        </figure>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         OPTIONAL BLOCK C
+         IMAGE + TEXT
+
+         FILE:
+         images/PROJECT-SLUG/image-05.jpg
+
+         DELETE THIS WHOLE SECTION
+         IF YOU DO NOT NEED THIS LAYOUT.
+    ========================== -->
+
+    <section class="project-media-section">
+
+      <div class="media-image-text">
+
+
+        <figure>
+
+
+          <img
+            src="images/PROJECT-SLUG/image-05.jpg"
+            alt="PROJECT-NAME project detail"
+            loading="lazy"
+            decoding="async"
+          >
+
+
+          <figcaption>
+            IMAGE CAPTION
+          </figcaption>
+
+
+        </figure>
+
+
+
+        <div class="media-text">
+
+
+          <p class="media-text-label">
+            PROCESS
+          </p>
+
+
+          <h2>
+            WRITE A SMALLER STORY HERE.
+          </h2>
+
+
+          <p>
+            Use this section to explain something
+            specific about this image or part
+            of the project.
+          </p>
+
+
+          <p>
+            You can delete this paragraph,
+            add more paragraphs, or remove
+            this whole block if it is not needed.
+          </p>
+
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         PROJECT NAVIGATION
+
+         SAFE DEFAULT:
+         PREVIOUS AND NEXT ARE DISABLED.
+
+         WHEN YOU KNOW THE ORDER:
+         - Replace PREVIOUS span with a link.
+         - Replace NEXT span with a link.
+         - Also update the neighboring project page.
+
+         Use an existing project page as reference.
+    ========================== -->
+
+    <section class="project-navigation">
+
+
+      <span class="project-nav-disabled">
+        ← PREVIOUS
+      </span>
+
+
+
+      <a
+        href="work.html"
+        class="project-nav-link"
+      >
+        BACK TO WORK
+      </a>
+
+
+
+      <span class="project-nav-disabled">
+        NEXT →
+      </span>
+
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- ==================================================
+       WORK.HTML CARD TEMPLATE
+
+       AFTER REPLACE ALL, THIS CARD IS ALREADY FILLED
+       WITH THE SAME PROJECT INFORMATION.
+
+       COPY ONLY THE <a> ... </a> BLOCK BELOW
+       AND PASTE IT INSIDE:
+
+       <section class="work-grid">
+
+       in work.html.
+
+       IMPORTANT:
+       PROJECT-FILTERS MUST USE ONLY THESE WORDS:
+       kv illustration motion 3d fine-art
+
+       Separate multiple categories with spaces.
+
+       COPY FROM THE NEXT LINE:
+
+       <a
+         class="project-link"
+         href="PROJECT-SLUG.html"
+         data-project-card
+         data-categories="PROJECT-FILTERS"
+       >
+         <article class="project-card">
+           <div class="project-image-wrapper">
+             <img
+               class="project-image"
+               src="images/PROJECT-SLUG/thumbnail.jpg"
+               alt="PROJECT-NAME"
+               loading="lazy"
+               decoding="async"
+             >
+           </div>
+           <div class="project-info">
+             <h2>
+               PROJECT-NAME
+             </h2>
+             <p>
+               PROJECT-CATEGORY / PROJECT-YEAR
+             </p>
+           </div>
+         </article>
+       </a>
+
+       COPY UNTIL THE PREVIOUS LINE.
+  =================================================== -->
+
+
+
+  <!-- ==================================================
+       FINAL PUBLISH CHECKLIST
+
+       [ ] File is named PROJECT-SLUG.html
+       [ ] Folder images/PROJECT-SLUG/ exists
+       [ ] thumbnail.jpg exists
+       [ ] hero.jpg exists
+       [ ] No broken optional image sections remain
+       [ ] ABOUT text is finished
+       [ ] Image captions are edited or removed
+       [ ] Card was added to work.html
+       [ ] PROJECT-FILTERS is correct in work.html
+       [ ] PREVIOUS / NEXT navigation is updated
+       [ ] Neighboring project navigation is updated
+       [ ] noindex meta tag above is deleted
+       [ ] Page works locally
+       [ ] Mobile layout was checked
+       [ ] Commit + Push with GitHub Desktop
+  =================================================== -->
+
+
+
+  <!-- =========================
+       JAVASCRIPT
+       DO NOT CHANGE
+  ========================== -->
+
+  <script src="script.js"></script>
+
+
+</body>
+
+</html>
