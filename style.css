@@ -253,9 +253,9 @@ img {
 
 .chaos-nav:hover::before,
 .chaos-nav.is-glitching::before {
-  opacity: 0.9;
+  opacity: 0.46;
 
-  color: #00e5ff;
+  color: #111111;
 
   clip-path: inset(0 0 52% 0);
 
@@ -269,9 +269,9 @@ img {
 
 .chaos-nav:hover::after,
 .chaos-nav.is-glitching::after {
-  opacity: 0.9;
+  opacity: 0.58;
 
-  color: #ff2bd6;
+  color: #777777;
 
   clip-path: inset(52% 0 0 0);
 
@@ -1487,7 +1487,8 @@ figcaption {
 
 
 .chaos-title::before {
-  color: #00e5ff;
+  color: #111111;
+  opacity: 0.52;
 
   clip-path: inset(0 0 55% 0);
 
@@ -1500,7 +1501,8 @@ figcaption {
 
 
 .chaos-title::after {
-  color: #ff2bd6;
+  color: #777777;
+  opacity: 0.62;
 
   clip-path: inset(55% 0 0 0);
 
@@ -1658,8 +1660,8 @@ figcaption {
 
 .chaos-card:hover {
   box-shadow:
-    10px 10px 0 #00e5ff,
-    -6px -6px 0 #ff2bd6;
+    9px 9px 0 #d7d7d7,
+    -3px -3px 0 #111111;
 }
 
 
@@ -1667,10 +1669,10 @@ figcaption {
   cursor: grabbing;
 
   box-shadow:
-    14px
-    14px
+    12px
+    12px
     0
-    #f5ff00;
+    #bdbdbd;
 }
 
 
@@ -1869,8 +1871,8 @@ body.chaos-lightbox-open {
 
   border: 1px solid rgba(255, 255, 255, 0.55);
   box-shadow:
-    10px 10px 0 #00e5ff,
-    -8px -8px 0 #ff2bd6;
+    10px 10px 0 rgba(255, 255, 255, 0.18),
+    -4px -4px 0 rgba(255, 255, 255, 0.55);
 }
 
 .chaos-lightbox-caption {
@@ -1989,22 +1991,22 @@ body.chaos-lightbox-open {
 
 
 .chaos-swatch-grid div:nth-child(2) {
-  background: #00e5ff;
+  background: #444444;
 }
 
 
 .chaos-swatch-grid div:nth-child(3) {
-  background: #ff2bd6;
+  background: #777777;
 }
 
 
 .chaos-swatch-grid div:nth-child(4) {
-  background: #f5ff00;
+  background: #e6e6e6;
 }
 
 
 .chaos-swatch-grid div:nth-child(5) {
-  background: #ff5a24;
+  background: #dddddd;
 }
 
 
@@ -2794,8 +2796,8 @@ body.chaos-lightbox-open {
     max-height: 78vh;
 
     box-shadow:
-      6px 6px 0 #00e5ff,
-      -5px -5px 0 #ff2bd6;
+      6px 6px 0 rgba(255, 255, 255, 0.18),
+      -3px -3px 0 rgba(255, 255, 255, 0.55);
   }
 
 
@@ -2873,19 +2875,19 @@ body.chaos-lightbox-open {
 }
 
 .chaos-page-body.is-chaos-worse .chaos-page {
-  filter: contrast(1.35) saturate(2.2) hue-rotate(16deg);
-  animation: chaos-make-worse 0.11s steps(2, end) infinite;
+  filter: grayscale(1) contrast(1.62) brightness(0.9);
+  animation: chaos-make-worse 0.085s steps(2, end) infinite;
 }
 
 .chaos-page-body.is-chaos-worse .chaos-card {
   box-shadow:
-    16px 0 0 #00e5ff,
-    -16px 0 0 #ff2bd6,
-    0 16px 0 #f5ff00;
+    8px 0 0 #111111,
+    -7px 0 0 #777777,
+    0 7px 0 #d8d8d8;
 }
 
 .chaos-page-body.is-chaos-worse .chaos-title {
-  letter-spacing: -0.2em;
+  letter-spacing: -0.16em;
 }
 
 @keyframes chaos-make-worse {
@@ -2893,20 +2895,24 @@ body.chaos-lightbox-open {
     transform: translate(0, 0) skewX(0deg);
   }
 
-  25% {
-    transform: translate(-8px, 2px) skewX(2deg);
+  20% {
+    transform: translate(-3px, 0) skewX(0.45deg);
   }
 
-  50% {
-    transform: translate(7px, -3px) skewX(-3deg);
+  40% {
+    transform: translate(4px, -1px) skewX(-0.6deg);
   }
 
-  75% {
-    transform: translate(-3px, 5px) skewX(1deg);
+  60% {
+    transform: translate(-2px, 1px) skewX(0.3deg);
+  }
+
+  80% {
+    transform: translate(3px, 0) skewX(-0.4deg);
   }
 
   100% {
-    transform: translate(5px, -1px) skewX(-1deg);
+    transform: translate(0, 0) skewX(0deg);
   }
 }
 
@@ -3130,8 +3136,8 @@ body.chaos-lightbox-open {
 
   box-shadow:
     10px 10px 0 rgba(0, 0, 0, 0.16),
-    4px 4px 0 #00e5ff,
-    -4px -4px 0 #ff2bd6;
+    3px 3px 0 #b8b8b8,
+    -2px -2px 0 #333333;
 
   pointer-events: auto;
 }
@@ -3144,9 +3150,9 @@ body.chaos-lightbox-open {
 
 .chaos-window.is-window-dragging {
   box-shadow:
-    14px 14px 0 #f5ff00,
-    5px 5px 0 #00e5ff,
-    -5px -5px 0 #ff2bd6;
+    12px 12px 0 #bdbdbd,
+    4px 4px 0 #666666,
+    -3px -3px 0 #111111;
 }
 
 
